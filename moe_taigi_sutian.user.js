@@ -9,6 +9,7 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @connect      127.0.0.1
+// @connect      www.moedict.tw
 // ==/UserScript==
 
 (function () {
@@ -42,6 +43,8 @@
     // ─── AnkiConnect ──────────────────────────────────────────────────────────
 
     function ankiRequest(action, params = {}) {
+        console.log('AnkiConnect request:');
+        console.log({ action, version: 6, params });
         return new Promise((resolve, reject) => {
             GM_xmlhttpRequest({
                 method: 'POST',
@@ -64,68 +67,45 @@
         });
     }
 
-    // ─── Page data extraction (entry detail pages only) ───────────────────────
+    // ─── MoEDict API ──────────────────────────────────────────────────────────
 
     function isEntryPage() {
         return /\/zh-hant\/su\/\d+\/?$/.test(location.pathname);
     }
 
-    function extractEntryData() {
-        // Hanzi: main <h1>
-        const hanzi = document.querySelector('h1')?.textContent.trim() ?? '';
+    function stripHtml(html) {
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        return div.textContent.trim();
+    }
 
-        // Pronunciation: <dt> elements with 文/白 markers, followed by <dd> with romanization
-        const readings = [];
-        document.querySelectorAll('dt').forEach(dt => {
-            const marker = dt.textContent.trim();
-            if (marker !== '文' && marker !== '白') return;
-            const dd = dt.nextElementSibling;
-            if (!dd || dd.tagName !== 'DD') return;
-            const clone = dd.cloneNode(true);
-            clone.querySelectorAll('button').forEach(el => el.remove());
-            const rom = clone.textContent.replace(/\s+/g, ' ').trim();
-            if (rom) readings.push(`[${marker}] ${rom}`);
+    function heteronymAudioUrl(heteronymId) {
+        const id = parseInt(heteronymId, 10);
+        const folder = Math.floor(id / 1000);
+        return `${BASE_URL}/media/senn/mp3/imtong/subak/${folder}/${id}.mp3`;
+    }
+
+    function fetchWordData(hanzi) {
+        return new Promise((resolve, reject) => {
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: `https://www.moedict.tw/api/'${encodeURIComponent(hanzi)}.json`,
+                onload(response) {
+                    if (response.status === 404) {
+                        reject(new Error(`No entry found for "${hanzi}"`));
+                        return;
+                    }
+                    try {
+                        resolve(JSON.parse(response.responseText));
+                    } catch {
+                        reject(new Error('Failed to parse API response'));
+                    }
+                },
+                onerror() {
+                    reject(new Error('Failed to fetch from MoEDict API'));
+                }
+            });
         });
-        const pronunciation = readings.join('; ');
-
-        // Definition: <ol> following the <h2> that contains 釋義
-        let definition = '';
-        for (const h2 of document.querySelectorAll('h2')) {
-            if (!h2.textContent.includes('釋義')) continue;
-            const ol = h2.nextElementSibling;
-            if (ol) {
-                const items = [];
-                ol.querySelectorAll('li').forEach(li => {
-                    const clone = li.cloneNode(true);
-                    clone.querySelectorAll('button').forEach(el => el.remove());
-                    const text = clone.textContent.replace(/\s+/g, ' ').trim();
-                    if (text) items.push(text);
-                });
-                definition = items.length > 1
-                    ? items.map((t, i) => `${i + 1}. ${t}`).join('<br>')
-                    : (items[0] ?? '');
-            }
-            break;
-        }
-
-        // Audio: first button whose visually-hidden label contains 播放音讀
-        let audioUrl = null;
-        for (const btn of document.querySelectorAll('button.imtong-liua[data-src]')) {
-            const label = btn.querySelector('.visually-hidden')?.textContent ?? '';
-            if (!label.includes('播放音讀')) continue;
-            const raw = btn.getAttribute('data-src');
-            let src;
-            try {
-                const parsed = JSON.parse(raw);
-                src = Array.isArray(parsed) ? parsed[0] : parsed;
-            } catch {
-                src = raw;
-            }
-            audioUrl = src.startsWith('http') ? src : BASE_URL + src;
-            break;
-        }
-
-        return { hanzi, pronunciation, definition, audioUrl };
     }
 
     // ─── Audio link wrapping ──────────────────────────────────────────────────
@@ -156,18 +136,48 @@
     function injectStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            #sutian-anki-btn {
-                margin: 8px 0;
-                padding: 6px 14px;
+            .sutian-anki-panel {
+                margin: 8px 0 16px;
+                font-family: sans-serif;
+                font-size: 14px;
+            }
+            .sutian-anki-row {
+                display: flex;
+                align-items: baseline;
+                gap: 12px;
+                padding: 5px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .sutian-anki-row:last-child { border-bottom: none; }
+            .sutian-anki-reading {
+                min-width: 100px;
+                color: #444;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+            .sutian-anki-def {
+                flex: 1;
+                color: #555;
+            }
+            .sutian-anki-add {
+                padding: 3px 10px;
                 background: #4a90e2;
                 color: white;
                 border: none;
-                border-radius: 4px;
+                border-radius: 3px;
                 cursor: pointer;
-                font-size: 14px;
+                font-size: 12px;
+                white-space: nowrap;
             }
-            #sutian-anki-btn:hover { background: #357abd; }
-            #sutian-anki-btn:disabled { background: #aaa; cursor: default; }
+            .sutian-anki-add:hover { background: #357abd; }
+            .sutian-anki-add:disabled { background: #aaa; cursor: default; }
+            .sutian-anki-status {
+                font-size: 12px;
+                min-width: 60px;
+                white-space: nowrap;
+            }
+            .sutian-anki-status.success { color: #2a7a2a; }
+            .sutian-anki-status.error { color: #c0392b; }
             #sutian-settings-btn {
                 position: fixed;
                 bottom: 16px;
@@ -251,13 +261,6 @@
             #sutian-modal .btn-primary:hover { background: #357abd; }
             #sutian-modal .btn-secondary { background: #e0e0e0; color: #333; }
             #sutian-modal .btn-secondary:hover { background: #ccc; }
-            #sutian-status {
-                margin-top: 6px;
-                font-size: 13px;
-                min-height: 18px;
-            }
-            #sutian-status.success { color: #2a7a2a; }
-            #sutian-status.error { color: #c0392b; }
         `;
         document.head.appendChild(style);
     }
@@ -370,19 +373,17 @@
 
     // ─── Add to Anki ──────────────────────────────────────────────────────────
 
-    async function addToAnki(btn, statusEl) {
+    async function addHeteronymToAnki(btn, statusEl, hanzi, pronunciation, definition, audioUrl) {
         const config = await loadConfig();
         if (!config.deck || !config.model) {
-            statusEl.textContent = 'Configure Anki settings first (⚙ button, bottom right).';
-            statusEl.className = 'error';
+            statusEl.textContent = 'Configure settings first.';
+            statusEl.className = 'sutian-anki-status error';
             return;
         }
 
         btn.disabled = true;
         statusEl.textContent = '';
-        statusEl.className = '';
-
-        const { hanzi, pronunciation, definition, audioUrl } = extractEntryData();
+        statusEl.className = 'sutian-anki-status';
 
         const fields = {};
         if (config.fields.pronunciation) fields[config.fields.pronunciation] = pronunciation;
@@ -391,21 +392,19 @@
 
         if (audioUrl && config.fields.audio) {
             try {
-                statusEl.textContent = 'Storing audio…';
                 const filename = audioUrl.split('/').pop();
                 // AnkiConnect fetches the URL itself — no need to download it here
                 await ankiRequest('storeMediaFile', { filename, url: audioUrl });
                 fields[config.fields.audio] = `[sound:${filename}]`;
             } catch (e) {
-                statusEl.textContent = `Audio error: ${e.message}`;
-                statusEl.className = 'error';
+                statusEl.textContent = `Audio: ${e.message}`;
+                statusEl.className = 'sutian-anki-status error';
                 btn.disabled = false;
                 return;
             }
         }
 
         try {
-            statusEl.textContent = 'Adding note…';
             await ankiRequest('addNote', {
                 note: {
                     deckName: config.deck,
@@ -415,30 +414,79 @@
                     options: { allowDuplicate: false, duplicateScope: 'deck' }
                 }
             });
-            statusEl.textContent = `✓ Added "${hanzi}" to Anki.`;
-            statusEl.className = 'success';
+            statusEl.textContent = '✓ Added';
+            statusEl.className = 'sutian-anki-status success';
         } catch (e) {
-            statusEl.textContent = `Anki error: ${e.message}`;
-            statusEl.className = 'error';
+            statusEl.textContent = e.message;
+            statusEl.className = 'sutian-anki-status error';
             btn.disabled = false;
         }
     }
 
-    function injectAnkiButton() {
+    async function injectAnkiUI() {
         if (!isEntryPage()) return;
         const h1 = document.querySelector('h1');
         if (!h1) return;
+        const hanzi = h1.textContent.trim();
 
-        const wrapper = document.createElement('div');
-        const btn = document.createElement('button');
-        btn.id = 'sutian-anki-btn';
-        btn.textContent = 'Add to Anki';
-        const status = document.createElement('div');
-        status.id = 'sutian-status';
-        btn.addEventListener('click', () => addToAnki(btn, status));
-        wrapper.appendChild(btn);
-        wrapper.appendChild(status);
-        h1.insertAdjacentElement('afterend', wrapper);
+        const panel = document.createElement('div');
+        panel.className = 'sutian-anki-panel';
+        panel.innerHTML = '<span style="color:#888;font-size:13px">Loading…</span>';
+        h1.insertAdjacentElement('afterend', panel);
+
+        let data;
+        try {
+            data = await fetchWordData(hanzi);
+        } catch (e) {
+            panel.innerHTML = `<span style="color:#c0392b;font-size:13px">${e.message}</span>`;
+            return;
+        }
+
+        panel.innerHTML = '';
+        for (const heteronym of data.heteronyms ?? []) {
+            const reading = stripHtml(heteronym.reading ?? '');
+            const trs = heteronym.trs ?? '';
+            const pronunciation = `[${reading}] ${trs}`;
+            const audioUrl = heteronymAudioUrl(heteronym.id);
+
+            const defs = (heteronym.definitions ?? []).map(d => {
+                const type = stripHtml(d.type ?? '');
+                const def = stripHtml(d.def ?? '');
+                return type ? `(${type}) ${def}` : def;
+            });
+            const defText = defs.join(' / ');
+            const defHtml = defs.length > 1
+                ? defs.map((d, i) => `${i + 1}. ${d}`).join('<br>')
+                : (defs[0] ?? '');
+
+            const row = document.createElement('div');
+            row.className = 'sutian-anki-row';
+
+            const readingEl = document.createElement('span');
+            readingEl.className = 'sutian-anki-reading';
+            readingEl.textContent = pronunciation;
+
+            const defEl = document.createElement('span');
+            defEl.className = 'sutian-anki-def';
+            defEl.textContent = defText;
+
+            const addBtn = document.createElement('button');
+            addBtn.className = 'sutian-anki-add';
+            addBtn.textContent = 'Add to Anki';
+
+            const statusEl = document.createElement('span');
+            statusEl.className = 'sutian-anki-status';
+
+            addBtn.addEventListener('click', () =>
+                addHeteronymToAnki(addBtn, statusEl, hanzi, pronunciation, defHtml, audioUrl)
+            );
+
+            row.appendChild(readingEl);
+            row.appendChild(defEl);
+            row.appendChild(addBtn);
+            row.appendChild(statusEl);
+            panel.appendChild(row);
+        }
     }
 
     function injectSettingsButton() {
@@ -454,7 +502,7 @@
 
     injectStyles();
     processButtons();
-    injectAnkiButton();
+    injectAnkiUI();
     injectSettingsButton();
 
     const observer = new MutationObserver(processButtons);
