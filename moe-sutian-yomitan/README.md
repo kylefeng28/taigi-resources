@@ -1,0 +1,3 @@
+- [moedict-data-twblg](Pleco-User-Dictionaries](https://github.com/g0v/moedict-data-twblg) original json source data
+- [MoE Minnan Pleco User Dictionary](https://github.com/alexhk90/Pleco-User-Dictionaries) - similar project using same json source, but for user dictionaries for Pleco
+- [Jitendex](https://github.com/Jitendex/Jitendex) - improved JMDict dictionary for Yomitan and MDict format
