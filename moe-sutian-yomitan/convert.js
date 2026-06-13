@@ -79,11 +79,19 @@ function buildDefinitionContent(het) {
 
   for (const entry of data) {
     for (const het of entry.heteronyms) {
-      const term = new TermEntry(entry.title)
-        .setReading(het.trs)
-        .addDetailedDefinition(buildDefinitionContent(het))
-        .build();
-      await dictionary.addTerm(term);
+      const definition = buildDefinitionContent(het);
+
+      const trs = het.trs.normalize('NFC');
+
+      // Hanzi entry: hover over 佮意 → shows kah-ì
+      await dictionary.addTerm(
+        new TermEntry(entry.title).setReading(trs).addDetailedDefinition(definition).build()
+      );
+
+      // Romanization entry: hover over kah-ì → shows 佮意
+      await dictionary.addTerm(
+        new TermEntry(trs).setReading(entry.title).addDetailedDefinition(definition).build()
+      );
     }
   }
 
