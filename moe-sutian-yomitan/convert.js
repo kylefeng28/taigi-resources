@@ -21,6 +21,18 @@ function parseExample(raw) {
 function buildDefinitionContent(het) {
   const rows = [];
 
+  if (het.reading) {
+    const colors = { '白': 'green', '文': 'blue', '俗': 'orange', '替': 'gray' };
+    rows.push({
+      tag: 'div',
+      content: [{
+        tag: 'span',
+        content: het.reading,
+        style: { fontWeight: 'bold', color: colors[het.reading] ?? 'gray' },
+      }],
+    });
+  }
+
   for (const def of het.definitions) {
     const defParts = [];
 
@@ -78,7 +90,11 @@ function buildDefinitionContent(het) {
   await dictionary.setIndex(index);
 
   for (const entry of data) {
-    for (const het of entry.heteronyms) {
+    const readingOrder = { '替': 0, '白': 1, '文': 2, '': 3 };
+    const heteronyms = [...entry.heteronyms].sort(
+      (a, b) => (readingOrder[a.reading ?? ''] ?? 2) - (readingOrder[b.reading ?? ''] ?? 2)
+    );
+    for (const het of heteronyms) {
       const definition = buildDefinitionContent(het);
 
       const trs = het.trs.normalize('NFC');
