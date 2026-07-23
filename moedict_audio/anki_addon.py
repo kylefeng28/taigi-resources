@@ -1,9 +1,9 @@
 """
 Taigi Moedict Audio Addon for Anki
 
-Automatically fetches Taigi pronunciation audio from the Moedict API
-and inserts it into the configured audio field when the hanzi field
-loses focus (or when manually triggered via the editor button).
+Automatically fetches Taigi pronunciation and audio from the Moedict API
+and inserts them into the configured Tai-Lo and Audio fields when the hanzi
+field loses focus (or when manually triggered via the editor button).
 
 Hooks:
 - editFocusLost (legacy): auto-lookup when the source field loses focus
@@ -45,6 +45,7 @@ def get_config() -> dict:
     return mw.addonManager.getConfig(__name__) or {
         "note_type": "Taigi",
         "source_field": "Hanzi",
+        "tailo_field": "Pronunciation (Tai-lô)",
         "audio_field": "Audio",
         "auto_lookup": True,
     }
@@ -83,14 +84,22 @@ def prompt_heteronym_selection(hanzi: str, heteronyms: List[Heteronym]) -> Optio
     return None
 
 
+def field_needs_fill(note, field_name: str, field_names: List[str]) -> bool:
+    """Check if a field exists in the note type and is currently empty."""
+    if field_name not in field_names:
+        return False
+    return not note[field_name].strip()
+
+
 # --- Addon actions ---
 
-def do_audio_lookup(editor: Editor) -> None:
+def do_lookup(editor: Editor) -> None:
     """
-    Perform the audio lookup for the current note in the editor.
+    Perform the Moedict lookup for the current note in the editor.
 
-    Reads the source field, queries Moedict, downloads audio,
-    stores it in Anki's media folder, and updates the audio field.
+    Reads the source field, queries Moedict, and populates the Tai-Lo
+    and Audio fields based on the selected heteronym. Fields that already
+    have content are skipped.
     """
     config = get_config()
     note = editor.note
@@ -104,12 +113,16 @@ def do_audio_lookup(editor: Editor) -> None:
         return
 
     source_field = config["source_field"]
+    tailo_field = config["tailo_field"]
     audio_field = config["audio_field"]
 
-    # Check fields exist
+    # Check source field exists
     field_names = [f["name"] for f in note.note_type()["flds"]]
     if source_field not in field_names:
         tooltip(f"Field \"{source_field}\" not found in note type.")
+        return
+    if tailo_field not in field_names:
+        tooltip(f"Field \"{tailo_field}\" not found in note type.")
         return
     if audio_field not in field_names:
         tooltip(f"Field \"{audio_field}\" not found in note type.")
@@ -122,9 +135,12 @@ def do_audio_lookup(editor: Editor) -> None:
         tooltip("Source field is empty.")
         return
 
-    # Skip if audio field already has content
-    if note[audio_field].strip():
-        tooltip("Audio field already has content. Clear it to re-fetch.")
+    # Determine which fields need filling
+    needs_tailo = field_needs_fill(note, tailo_field, field_names)
+    needs_audio = field_needs_fill(note, audio_field, field_names)
+
+    if not needs_tailo and not needs_audio:
+        tooltip("Tai-Lo and Audio fields already filled. Clear them to re-fetch.")
         return
 
     # Fetch from API
@@ -143,7 +159,7 @@ def do_audio_lookup(editor: Editor) -> None:
     # Extract heteronyms with audio
     heteronyms = extract_heteronyms(response)
     if not heteronyms:
-        tooltip(f"No audio available for 「{hanzi}」.")
+        tooltip(f"No data available for 「{hanzi}」.")
         return
 
     # Select heteronym
@@ -154,32 +170,40 @@ def do_audio_lookup(editor: Editor) -> None:
         if selected is None:
             return
 
-    # Download audio
-    audio_data = download_audio_data(selected)
-    if audio_data is None:
-        tooltip(f"Could not download audio for 「{hanzi}」 ({selected.display_label()}).")
-        return
+    # Populate Tai-Lo field if needed
+    if needs_tailo:
+        note[tailo_field] = selected.trs
 
-    # Store in Anki media collection
-    filename = audio_filename(hanzi, selected)
-    mw.col.media.write_data(filename, audio_data)
+    # Populate Audio field if needed
+    if needs_audio:
+        audio_data = download_audio_data(selected)
+        if audio_data is not None:
+            filename = audio_filename(hanzi, selected)
+            mw.col.media.write_data(filename, audio_data)
+            note[audio_field] = f"[sound:{filename}]"
+        else:
+            tooltip(f"Could not download audio for 「{hanzi}」 ({selected.display_label()}).")
 
-    # Update the audio field with [sound:filename]
-    note[audio_field] = f"[sound:{filename}]"
-
-    # Refresh the editor to show the change
+    # Refresh the editor to show the changes
     editor.loadNoteKeepingFocus()
 
-    tooltip(f"Added audio: {selected.display_label()}")
+    # Build summary of what was filled
+    filled = []
+    if needs_tailo:
+        filled.append(f"Tai-Lo: {selected.trs}")
+    if needs_audio and note[audio_field].strip():
+        filled.append("Audio ✓")
+    tooltip(f"{selected.display_label()} → {', '.join(filled)}")
 
 
 # --- Hook: auto-lookup when source field loses focus (legacy hook, widely compatible) ---
+
 def on_field_unfocus(changed: bool, note, field_idx: int) -> bool:
     """
     Legacy hook (editFocusLost) triggered when a field loses focus in the editor.
 
-    If the unfocused field is the configured source field, and the audio field
-    is empty, trigger the audio lookup.
+    If the unfocused field is the configured source field, and either the
+    Tai-Lo or Audio field is empty, trigger the lookup.
     """
     config = get_config()
 
@@ -192,11 +216,12 @@ def on_field_unfocus(changed: bool, note, field_idx: int) -> bool:
         return changed
 
     source_field = config["source_field"]
+    tailo_field = config["tailo_field"]
     audio_field = config["audio_field"]
 
     # Get field names to find indices
     field_names = [f["name"] for f in note.note_type()["flds"]]
-    if source_field not in field_names or audio_field not in field_names:
+    if source_field not in field_names:
         return changed
 
     source_idx = field_names.index(source_field)
@@ -211,8 +236,12 @@ def on_field_unfocus(changed: bool, note, field_idx: int) -> bool:
     if not hanzi:
         return changed
 
-    # Skip if audio field already has content
-    if note[audio_field].strip():
+    # Determine which fields need filling
+    needs_tailo = field_needs_fill(note, tailo_field, field_names)
+    needs_audio = field_needs_fill(note, audio_field, field_names)
+
+    # Skip if nothing to do
+    if not needs_tailo and not needs_audio:
         return changed
 
     # Fetch from API
@@ -234,29 +263,30 @@ def on_field_unfocus(changed: bool, note, field_idx: int) -> bool:
         if selected is None:
             return changed
 
-    # Download audio
-    audio_data = download_audio_data(selected)
-    if audio_data is None:
-        return changed
+    # Populate Tai-Lo field if needed
+    if needs_tailo:
+        note[tailo_field] = selected.trs
 
-    # Store in Anki media collection
-    filename = audio_filename(hanzi, selected)
-    mw.col.media.write_data(filename, audio_data)
-
-    # Update the audio field
-    note[audio_field] = f"[sound:{filename}]"
+    # Populate Audio field if needed
+    if needs_audio:
+        audio_data = download_audio_data(selected)
+        if audio_data is not None:
+            filename = audio_filename(hanzi, selected)
+            mw.col.media.write_data(filename, audio_data)
+            note[audio_field] = f"[sound:{filename}]"
 
     return True  # Signal that we changed the note (editor will reload)
 
 
 # --- Hook: manual trigger button in editor toolbar ---
+
 def add_editor_button(buttons: list, editor: Editor) -> list:
-    """Add a 'Taigi Audio' button to the editor toolbar."""
+    """Add a 'Taigi Lookup' button to the editor toolbar."""
     button = editor.addButton(
         icon=None,
-        cmd="taigi_audio",
-        func=lambda e: do_audio_lookup(e),
-        tip="Look up Taigi audio from Moedict (Ctrl+Shift+T)",
+        cmd="taigi_lookup",
+        func=lambda e: do_lookup(e),
+        tip="Look up Taigi reading + audio from Moedict (Ctrl+Shift+T)",
         keys="Ctrl+Shift+T",
         label="台",
     )
