@@ -1,3 +1,3 @@
-[submodule "moedict-sutian/moedict-data-twblg"]
-	path = moedict-sutian/moedict-data-twblg
+[submodule "moe-sutian-yomitan/moedict-data-twblg"]
+	path = moe-sutian-yomitan/moedict-data-twblg
 	url = https://github.com/g0v/moedict-data-twblg
