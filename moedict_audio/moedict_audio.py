@@ -15,127 +15,16 @@ from __future__ import annotations
 
 import re
 import sys
-import urllib.request
 import urllib.error
-import json
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
-
-MOEDICT_API_URL = "https://www.moedict.tw/api/'{hanzi}.json"
-AUDIO_BASE_URL = "https://r2-assets.moedict.tw/audio/t/{audio_id}.mp3"
-
-
-@dataclass
-class Heteronym:
-    """Represents a single heteronym (pronunciation variant) of a character."""
-    trs: str  # Tâi-lô romanization
-    audio_id: str | None  # Dedicated audio ID (preferred)
-    entry_id: str | None  # Entry ID (fallback for audio)
-    reading_type: str | None  # 白, 文, 替, 俗, etc.
-
-    @property
-    def effective_audio_id(self) -> str | None:
-        """Return the audio ID to use: audio_id if present, otherwise entry id."""
-        return self.audio_id or self.entry_id
-
-    @property
-    def audio_urls(self) -> list[str]:
-        """
-        Return candidate audio URLs to try in order.
-
-        The Moedict R2 bucket is inconsistent with zero-padding:
-        some files use the raw numeric ID, others need 5-digit zero-padding.
-        We try the 5-digit padded first, then the unpadded.
-        """
-        eid = self.effective_audio_id
-        if eid is None:
-            return []
-
-        urls = []
-        if eid.isdigit():
-            padded = eid.zfill(5)
-            if padded != eid:
-                urls.append(AUDIO_BASE_URL.format(audio_id=padded))
-        urls.append(AUDIO_BASE_URL.format(audio_id=eid))
-
-        return urls
-
-    def display_label(self) -> str:
-        """Human-readable label for heteronym selection prompts."""
-        parts = []
-        if self.reading_type:
-            parts.append(f"[{self.reading_type}]")
-        parts.append(self.trs)
-        eid = self.effective_audio_id
-        if eid:
-            parts.append(f"({eid})")
-        return " ".join(parts)
-
-
-def parse_reading_type(reading_html: str | None) -> str | None:
-    """
-    Extract the reading type (白, 文, 替, 俗, etc.) from the HTML `reading` field.
-    """
-    if not reading_html:
-        return None
-    # Match the text content between > and </a>
-    # e.g. <a href="./#'白">白</a>
-    match = re.search(r">([^<]+)</a>", reading_html)
-    if match:
-        return match.group(1)
-    return None
-
-
-def fetch_moedict(hanzi: str) -> dict:
-    """
-    Fetch the Moedict API response for a given hanzi.
-    """
-    # URL-encode the hanzi for the request path
-    from urllib.parse import quote
-    encoded_hanzi = quote(hanzi, safe="")
-    url = MOEDICT_API_URL.format(hanzi=encoded_hanzi)
-    req = urllib.request.Request(url, headers={"User-Agent": "moedict-audio-cli/1.0"})
-    with urllib.request.urlopen(req) as response:
-        data = response.read().decode("utf-8")
-    return json.loads(data)
-
-
-def extract_heteronyms(api_response: dict) -> list[Heteronym]:
-    """
-    Parse the API response and extract heteronyms that have audio available.
-    """
-    heteronyms = []
-    for h in api_response.get("heteronyms", []):
-        trs = h.get("trs", "")
-        audio_id = h.get("audio_id")
-        entry_id = h.get("id")
-        reading_type = parse_reading_type(h.get("reading"))
-
-        # Skip heteronyms that have no audio source at all
-        if not audio_id and not entry_id:
-            continue
-
-        heteronyms.append(Heteronym(
-            trs=trs,
-            audio_id=audio_id,
-            entry_id=entry_id,
-            reading_type=reading_type,
-        ))
-
-    return heteronyms
-
-
-def download_audio(url: str, output_path: Path) -> None:
-    """
-    Download an MP3 file from the given URL and save it to output_path.
-    """
-    req = urllib.request.Request(url, headers={"User-Agent": "moedict-audio-cli/1.0"})
-    with urllib.request.urlopen(req) as response:
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, "wb") as f:
-            f.write(response.read())
+from .core import (
+    Heteronym,
+    fetch_moedict,
+    extract_heteronyms,
+    download_audio_data,
+    audio_filename,
+)
 
 
 # --- CLI interface ---
@@ -231,41 +120,19 @@ def lookup_audio(hanzi: str, output_dir: Path | None = None, interactive: bool =
         return None
 
     # Download audio
-    audio_urls = selected.audio_urls
-    if not audio_urls:
-        print("  No audio URL for selected reading.")
+    audio_data = download_audio_data(selected)
+    if audio_data is None:
+        print(f"  Error: Could not download audio for {selected.display_label()}.")
         return None
 
-    # Build output filename: {hanzi}_{trs}_{id}.mp3
-    safe_trs = re.sub(r"[^\w]", "", selected.trs)
-    eid = selected.effective_audio_id
-    filename = f"{hanzi}_{safe_trs}_{eid}.mp3"
+    # Save to file
+    filename = audio_filename(hanzi, selected)
     output_path = output_dir / filename
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "wb") as f:
+        f.write(audio_data)
 
     print(f"  Reading: {selected.display_label()}")
-
-    # Try each candidate URL
-    downloaded = False
-    for url in audio_urls:
-        print(f"  Trying: {url}")
-        try:
-            download_audio(url, output_path)
-            downloaded = True
-            break
-        except urllib.error.HTTPError as e:
-            if e.code == 404 and url != audio_urls[-1]:
-                continue
-            if not downloaded:
-                print(f"  Error: Download failed with HTTP {e.code}")
-                return None
-        except Exception as e:
-            print(f"  Error downloading: {e}")
-            return None
-
-    if not downloaded:
-        print(f"  Error: Could not find audio file at any URL for {eid}.")
-        return None
-
     print(f"  Saved to: {output_path}")
 
     # Play audio if requested
