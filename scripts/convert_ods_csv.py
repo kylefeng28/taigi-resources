@@ -164,6 +164,7 @@ def convert(ods_path, output_dir):
             lomaji_raw = row[3]
             category = row[4] if len(row) > 4 else ''
             audio = row[5] if len(row) > 5 else ''
+            audio = audio.removesuffix('(1)')
 
             hanji, lomaji, reading_type = strip_markers(hanji_raw, lomaji_raw)
             w.writerow([entry_id, entry_type, hanji, lomaji, reading_type, category, audio])

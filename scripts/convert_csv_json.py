@@ -117,9 +117,14 @@ def build_dict(data_dir, variant, mandarin=None):
             }
 
             # Add reading type if present
-            reading = entry.get(COL_READING, '')
+            reading = entry.get(COL_READING)
             if reading:
                 heteronym['reading'] = reading
+
+            # Add audio information
+            audio_file = entry.get(COL_AUDIO_FILE)
+            if audio_file:
+                heteronym['audio_file'] = audio_file
 
             # Build definitions
             entry_defs = definitions.get(entry_id, [])
