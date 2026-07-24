@@ -20,3 +20,4 @@ fetch $DICTIONARY
 fetch $AUDIO_ENTRIES_MP3
 fetch $AUDIO_EXAMPLES_MP
 
+curl -L "https://github.com/g0v/moedict-data/raw/main/dict-revised.json.xz" | xz -d > data/dict-revised.json
