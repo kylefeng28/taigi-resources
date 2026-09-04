@@ -8,7 +8,7 @@ Pronouns,恁,lín,你們,you (pl.)
 Pronouns,𪜶,in,他們,they; them
 Pronouns,我的,guá ê,我的,my; mine
 Pronouns,你的,lí ê,你的,your; yours
-Pronouns,家己,ka-tī,自己,oneself
+Pronouns,家己,ka-kī,自己,oneself
 Pronouns,逐家,ta̍k-ke,大家,everyone
 Pronouns,別人,pa̍t-lâng,別人,other people
 Numbers,空,khòng,零,zero
@@ -54,19 +54,19 @@ Demonstratives,頂面,tíng-bīn,上面,on top of; above
 Demonstratives,下跤,ē-kha,下面,under; below
 Demonstratives,內底,lāi-té,裡面,inside
 Demonstratives,外口,guā-kháu,外面,outside
-Demonstratives,邊仔,pinn-á,旁邊,next to; beside
+Demonstratives,邊仔,pinn--á,旁邊,next to; beside
 Demonstratives,頭前,thâu-tsîng,前面,in front
 Demonstratives,後壁,āu-piah,後面,behind
 Demonstratives,正手爿,tsiànn-tshiú-pîng,右邊,right side
 Demonstratives,倒手爿,tò-tshiú-pîng,左邊,left side
 Demonstratives,中央,tiong-ng,中間,middle
-Time,這馬,tsím-má,現在,now
+Time,這馬,tsit-má,現在,now
 Time,時陣,sî-tsūn,時候,time; moment
 Time,今仔日,kin-á-ji̍t,今天,today
 Time,昨昏,tsa-hng,昨天,yesterday
 Time,明仔載,bîn-á-tsài,明天,tomorrow
-Time,後日,āu--jit,後天,the day after tomorrow
-Time,大前日,tuā-tsîng-jit,大前天,three days ago
+Time,後日,āu--ji̍t,後天,the day after tomorrow
+Time,大前日,tuā-tsîng-ji̍t,大前天,three days ago
 Time,今仔早,kin-á-tsái,今天早上,this morning
 Time,昨昏暗,tsa-hng-àm,昨晚,last night
 Time,頂禮拜,tíng-lé-pài,上禮拜,last week
@@ -78,7 +78,7 @@ Time,後個月,āu-kò-gue̍h,下個月,next month
 Time,舊年,kū-nî,去年,last year
 Time,今年,kin-nî,今年,this year
 Time,明年,mê-nî,明年,next year
-Time,早起,tsái-khí,早上,morning
+Time,早起,tsá-khí,早上,morning
 Time,中晝,tiong-tàu,中午,noon
 Time,下晡,ē-poo,下午,afternoon
 Time,暗時,àm-sî,晚上,evening; night
@@ -123,7 +123,7 @@ Comparative pattern,較少一寡,khah-tsió--tsi̍t-kuá,更少一些,a bit less
 Comparative pattern,較大一寡,khah-tuā--tsi̍t-kuá,更大一些,a bit bigger
 Comparative pattern,較細一寡,khah-sè--tsi̍t-kuá,更小一些,a bit smaller
 Comparative pattern,較好一寡,khah-hó--tsi̍t-kuá,更好一些,a bit better
-Comparative pattern,一寡,tsi̍t-kuá,一些,some; a few
+Comparative pattern,一寡,--tsi̍t-kuá,一些,some; a few
 Food & Drink,食飯,tsia̍h-pn̄g,吃飯,eat (a meal)
 Food & Drink,啉,lim,喝,to drink
 Food & Drink,啉水,lim tsuí,喝水,drink water
@@ -154,7 +154,7 @@ Food & Drink,好食,hó-tsia̍h,好吃,tasty
 Food & Drink,煮食,tsú-tsia̍h,煮飯; 做飯,to cook
 Common verbs,去,khì,去,to go
 Common verbs,來,lâi,來,to come
-Common verbs,轉去,tńg-khì,回去,to go back
+Common verbs,轉去,tńg--khì,回去,to go back
 Common verbs,轉來,tńg--lâi,回來,to come back
 Common verbs,轉去厝,tńg-khì tshù,回家,return home
 Common verbs,我轉來矣,guá tńg--lâi--ah,我回來了,I'm home / I've come back
@@ -186,8 +186,8 @@ Common verbs,讀冊,tha̍k-tsheh,讀書; 上學,to study; go to school
 Common verbs,耍,sńg,玩,to play
 Common verbs,等,tán,等,to wait
 Common verbs,知,tsai,知道,to know
-Common verbs,毋知,m̄-tsai,不知道,don't know
-Common verbs,會記得,ē-kì-tit,記得,to remember
+Common verbs,毋知,m̄ tsai,不知道,don't know
+Common verbs,會記得,ē-kì--tit,記得,to remember
 Common verbs,袂記得,bē-kì-tit,忘記,to forget
 Common verbs,驚,kiann,怕,to be afraid
 Common verbs,笑,tshiò,笑,to laugh; smile
@@ -213,7 +213,7 @@ Feelings & liking,快樂,khuài-lo̍k,快樂,joyful
 Feelings & liking,傷心,siong-sim,傷心,sad
 Feelings & liking,感謝,kám-siā,感謝,thank; grateful
 Feelings & liking,歹勢,pháinn-sè,不好意思,embarrassed; sorry (informal)
-Feelings & liking,無要緊,bô-iàu-kín,沒關係,it's okay; no problem
+Feelings & liking,無要緊,bô iàu-kín,沒關係,it's okay; no problem
 Feelings & liking,辛苦矣,sin-khóo--ah,辛苦了,thanks for your hard work
 Greetings & phrases,你好,lí-hó,你好,hello
 Greetings & phrases,食飽未,tsia̍h-pá--buē,吃飽了嗎,have you eaten? (greeting)
@@ -241,7 +241,7 @@ Shopping & money,價數,kè-siàu,價格,price
 Shopping & money,俗,sio̍k,便宜,cheap
 Shopping & money,貴,kuì,貴,expensive
 Shopping & money,算便宜咧,sǹg sio̍k--leh,算便宜一點,give me a discount
-Shopping & money,找錢,tsáu-tsînn,找錢,give change
+Shopping & money,找錢,tsāu-tsînn,找錢,give change
 Shopping & money,店,tiàm,店,shop; store
 Shopping & money,市場,tshī-tiûnn,市場,market
 Shopping & money,買物件,bé mi̍h-kiānn,買東西,to shop; buy things
@@ -355,7 +355,7 @@ Transportation,機車,ki-tshia,機車,scooter; motorcycle
 Transportation,跤踏車,kha-ta̍h-tshia,腳踏車,bicycle
 Transportation,公車,kong-tshia,公車,bus
 Transportation,火車,hué-tshia,火車,train
-Transportation,飛行機,hui-lîng-ki,飛機,airplane
+Transportation,飛行機,hue-lîng-ki,飛機,airplane
 Transportation,船,tsûn,船,boat; ship
 Transportation,駛車,sái-tshia,開車,to drive
 Transportation,行路,kiânn-lōo,走路,to walk (on foot)
@@ -400,7 +400,7 @@ Clothing,鞋,ê,鞋子,shoes
 Clothing,帽仔,bō-á,帽子,hat
 Clothing,穿,tshīng,穿,to wear
 Clothing,褪,thǹg,脫,to take off (clothes)
-Clothing,襪仔,be̍h-á,襪子,socks
+Clothing,襪仔,bue̍h-á,襪子,socks
 Clothing,外套,guā-thò,外套,jacket; coat
 Classifiers,个,ê,個,generic classifier
 Classifiers,本,pún,本,classifier for books
@@ -424,7 +424,7 @@ Useful phrases,入來,ji̍p-lâi,進來,to come in
 Useful phrases,出來,tshut-lâi,出來,to come out
 Useful phrases,入去,ji̍p-khì,進去,to go in
 Useful phrases,起床,khí-tshn̂g,起床,to get out of bed
-Useful phrases,洗身軀,sé-sing-khu,洗澡,to take a shower/bath
+Useful phrases,洗身軀,sé-sin-khu,洗澡,to take a shower/bath
 Useful phrases,刷喙齒,tshè-tshuì-khí,刷牙,to brush teeth
 Useful phrases,食藥仔,tsia̍h io̍h-á,吃藥,to take medicine
 Useful phrases,看醫生,khuànn i-sing,看醫生,to see a doctor
@@ -440,6 +440,6 @@ Useful phrases,有時,ū-sî,有時,sometimes
 Useful phrases,拄仔好,tú-á-hó,剛好,just right; coincidentally
 Useful phrases,煞矣,suah--ah,結束了,it's over; finished
 Useful phrases,猶咧,iáu-leh,還在,still (doing/being)
-Useful phrases,正經,tsiànn-king,認真; 真的,seriously; really
-Useful phrases,騙人,phiàn-lâng,騙人,to lie; deceive
+Useful phrases,正經,tsìng-king,認真; 真的,seriously; really
+Useful phrases,騙人,phiàn--lâng,騙人,to lie; deceive
 Useful phrases,拜託,pài-thok,拜託,please (request)
