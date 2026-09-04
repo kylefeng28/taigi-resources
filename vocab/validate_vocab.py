@@ -2,6 +2,7 @@
 
 import csv
 import json
+import re
 import sys
 import unicodedata
 from collections import defaultdict
@@ -12,6 +13,10 @@ def normalize_unicode(text: str) -> str:
     """Normalize Unicode to NFC for consistent comparison."""
     return unicodedata.normalize('NFC', text)
 
+
+def normalize_pronunciation(text: str) -> str:
+    # Replace single hyphen (-) with space, but not double hyphen (--)
+    return re.sub(r'(?<!-)-(?!-)', ' ', text)
 
 def load_dictionaries(dict_files: list[Path]) -> dict[str, list]:
     dictionary = defaultdict(list)
@@ -36,7 +41,8 @@ def extract_pronunciations(heteronyms: list) -> set[str]:
     for heteronym in heteronyms:
         trs = normalize_unicode(heteronym.get('trs', '').strip())
         if trs:
-            pronunciations.update(trs.split('/'))
+            for variant in trs.split('/'):
+                pronunciations.add(normalize_pronunciation(variant))
     return pronunciations
 
 
@@ -72,7 +78,9 @@ def validate_vocabulary(csv_path: Path, dictionary: dict[str, list]) -> tuple:
             # Check if Tai-lo matches any pronunciation
             dict_pronunciations = extract_pronunciations(dictionary[taiwanese])
             
-            if tailo in dict_pronunciations:
+            normalized_tailo = normalize_pronunciation(tailo)
+
+            if normalized_tailo in dict_pronunciations:
                 valid.append({
                     'row': row_num,
                     'entry': taiwanese,
