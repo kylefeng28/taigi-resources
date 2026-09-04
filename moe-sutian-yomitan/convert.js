@@ -74,7 +74,7 @@ function buildDefinitionContent(het) {
 }
 
 (async () => {
-  const data = JSON.parse(fs.readFileSync('moedict-data-twblg/dict-twblg.json', 'utf8'));
+  const data = JSON.parse(fs.readFileSync('dict-twblg.json', 'utf8'));
 
   const dictionary = new Dictionary({ fileName: 'moe-minnan.zip' });
 

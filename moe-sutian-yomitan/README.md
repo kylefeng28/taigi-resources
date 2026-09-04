@@ -1,4 +1,14 @@
 ## Taigi dictionary for Yomitan
+
+**NOTE**: See my Taigi-specific Chrome/Firefox extension [here](https://github.com/kylefeng28/taigi-popup-dict) instead! It doesn't involve any setup and includes:
+- Audio playback
+- Side by side Taigi / Mandarin pronunciation and definition
+- Link to MoE dictionary
+
+As such, I will not be updating the Yomitan dictionaries anymore. The information here is kept for archival purposes in case you really want use Yomitan; you can run `node ./convert.js` yourself if you want to have a more up to date copy of the dictionary data.
+
+---
+
 Yomitan dictionaries for Taiwanese, based on an older version of MoE's Dictionary of Frequently-Used Taiwanese Taigi (教育部臺灣台語常用詞辭典).
 
 The current online version is the MoE Taigi dictionary is here: https://sutian.moe.edu.tw/zh-hant/
