@@ -20,19 +20,19 @@ def normalize_pronunciation(text: str) -> str:
 
 def load_dictionaries(dict_files: list[Path]) -> dict[str, list]:
     dictionary = defaultdict(list)
-    
+
     for file_path in dict_files:
         if not file_path.exists():
             print(f"Warning: Dictionary file not found: {file_path}", file=sys.stderr)
             continue
-            
+
         with open(file_path, 'r', encoding='utf-8') as f:
             entries = json.load(f)
             for entry in entries:
                 title = normalize_unicode(entry.get('title', ''))
                 if title:
                     dictionary[title] += entry.get('heteronyms', [])
-    
+
     return dictionary
 
 
@@ -46,7 +46,27 @@ def extract_pronunciations(heteronyms: list) -> set[str]:
     return pronunciations
 
 
-def validate_vocabulary(csv_path: Path, dictionary: dict[str, list]) -> tuple:
+def load_exceptions(exceptions_path: Path) -> set[tuple]:
+    """Load known exceptions as (entry, tailo) tuples."""
+    exceptions = set()
+    if not exceptions_path.exists():
+        return exceptions
+
+    with open(exceptions_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            parts = line.split(maxsplit=1)
+            if len(parts) == 2:
+                entry = normalize_unicode(parts[0])
+                tailo = normalize_unicode(parts[1])
+                exceptions.add((entry, tailo))
+
+    return exceptions
+
+
+def validate_vocabulary(csv_path: Path, dictionary: dict[str, list], exceptions: set[tuple]) -> tuple:
     """
     Validate CSV entries against dictionary.
     
@@ -55,16 +75,26 @@ def validate_vocabulary(csv_path: Path, dictionary: dict[str, list]) -> tuple:
     valid = []
     mismatches = []
     missing = []
-    
+
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row_num, row in enumerate(reader, start=2):  # start=2 because header is row 1
             taiwanese = normalize_unicode(row.get('Taiwanese', '').strip())
             tailo = normalize_unicode(row.get('Tai-lo', '').strip())
-            
+
             if not taiwanese or not tailo:
                 continue
-            
+
+            # Check if it's a known exception
+            if (taiwanese, tailo) in exceptions:
+                valid.append({
+                    'row': row_num,
+                    'entry': taiwanese,
+                    'tailo': tailo,
+                    'is_exception': True
+                })
+                continue
+
             # Check if entry exists in dictionary
             if taiwanese not in dictionary:
                 missing.append({
@@ -74,12 +104,11 @@ def validate_vocabulary(csv_path: Path, dictionary: dict[str, list]) -> tuple:
                     'reason': 'Entry not found in dictionary'
                 })
                 continue
-            
+
             # Check if Tai-lo matches any pronunciation
             dict_pronunciations = extract_pronunciations(dictionary[taiwanese])
             
             normalized_tailo = normalize_pronunciation(tailo)
-
             if normalized_tailo in dict_pronunciations:
                 valid.append({
                     'row': row_num,
@@ -94,7 +123,7 @@ def validate_vocabulary(csv_path: Path, dictionary: dict[str, list]) -> tuple:
                     'dict_pronunciations': sorted(dict_pronunciations),
                     'reason': "Tai-lo mismatch"
                 })
-    
+
     return valid, mismatches, missing
 
 
@@ -102,23 +131,28 @@ def main():
     # Set up paths
     script_dir = Path(__file__).parent
     csv_path = script_dir / 'taigi_vocab.csv'
+    exceptions_path = script_dir / 'known_exceptions.txt'
     dict_files = [
         script_dir.parent / 'dict-twblg.json',
         script_dir.parent / 'dict-twblg-ext.json'
     ]
-    
+
     # Validate paths
     if not csv_path.exists():
         print(f"Error: CSV file not found: {csv_path}", file=sys.stderr)
         sys.exit(1)
-    
+
     print("Loading dictionaries...")
     dictionary = load_dictionaries(dict_files)
-    print(f"Loaded {len(dictionary)} entries from dictionaries\n")
-    
+    print(f"Loaded {len(dictionary)} entries from dictionaries")
+
+    print("Loading known exceptions...")
+    exceptions = load_exceptions(exceptions_path)
+    print(f"Loaded {len(exceptions)} known exceptions\n")
+
     print(f"Validating {csv_path}...")
-    valid, mismatches, missing = validate_vocabulary(csv_path, dictionary)
-    
+    valid, mismatches, missing = validate_vocabulary(csv_path, dictionary, exceptions)
+
     # Print results
     print(f"\n{'='*60}")
     print("VALIDATION RESULTS")
@@ -127,7 +161,7 @@ def main():
     print(f"✗ Mismatches: {len(mismatches)}")
     print(f"✗ Missing from dictionary: {len(missing)}")
     print(f"{'='*60}\n")
-    
+
     LIMIT = 20
     if mismatches:
         print("MISMATCHES (Tai-lo doesn't match dictionary):")
@@ -139,7 +173,7 @@ def main():
         if len(mismatches) > LIMIT:
             print(f"  ... and {len(mismatches) - LIMIT} more")
         print()
-    
+
     if missing:
         print("MISSING FROM DICTIONARY:")
         print(f"{'-'*60}")
@@ -148,7 +182,7 @@ def main():
         if len(missing) > LIMIT:
             print(f"  ... and {len(missing) - LIMIT} more")
         print()
-    
+
     # Return non-zero exit code if there are issues
     if mismatches or missing:
         sys.exit(1)
