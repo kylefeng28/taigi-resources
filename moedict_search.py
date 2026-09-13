@@ -16,6 +16,7 @@ Examples:
 import argparse
 import json
 import re
+import subprocess
 import sys
 import unicodedata
 from pathlib import Path
@@ -32,6 +33,7 @@ TYPE = "type"
 EXAMPLES = "examples"
 
 # Fields
+ID =  "id"
 HANJI = "hanji"
 TAILO = "tailo"
 MANDARIN = "mandarin"
@@ -94,13 +96,13 @@ def build_records(entries):
         for het in entry.get("heteronyms", []):
             tailo = het.get("trs", "")
             audio_file = het.get("audio_file")
-            het_id = het.get("id")
+            het_id = het.get(ID)
             for defn in het.get("definitions", []):
                 examples = [parse_example(e) for e in defn.get(EXAMPLE, [])]
                 example_audio_files = defn.get("example_audio_file", [])
                 records.append(
                     {
-                        "id": het_id,
+                        ID: het_id,
                         HANJI: title,
                         TAILO: tailo,
                         TYPE: defn.get(TYPE, ""),
@@ -121,17 +123,23 @@ def get_records(paths):
     return records
 
 
+# --- searching -----------------------------------------------------------
+
 def record_matches(record, query, fields):
     """Check whether the (accent-stripped) query appears in the chosen fields."""
     q = normalize(query)
 
     haystacks = []
+    if ID in fields:
+        haystacks.append(record[ID])
     if HANJI in fields:
         haystacks.append(record[HANJI])
-        haystacks.extend(ex[HANJI] for ex in record[EXAMPLES])
+        if EXAMPLE in fields:
+            haystacks.extend(ex[HANJI] for ex in record[EXAMPLES])
     if TAILO in fields:
         haystacks.append(record[TAILO])
-        haystacks.extend(ex[TAILO] for ex in record[EXAMPLES])
+        if EXAMPLE in fields:
+            haystacks.extend(ex[TAILO] for ex in record[EXAMPLES])
     if EXAMPLE in fields:
         for ex in record[EXAMPLES]:
             haystacks.extend([ex[HANJI], ex[TAILO], ex[MANDARIN]])
@@ -157,28 +165,68 @@ def print_record(record):
     print()
 
 
+# --- fzf integration -----------------------------------------------------
+
+def tsv_line(record):
+    example_preview = record[EXAMPLES][0][HANJI] if record[EXAMPLES] else ""
+    display = [record[ID], record[HANJI], record[TAILO], record[DEF][:30], example_preview[:30]]
+    return "\t".join(display)
+
+
+def run_fzf(records, script_path):
+    lines = "\n".join(tsv_line(r) for r in records)
+
+    preview_cmd = f"{sys.executable} {script_path} --id {{1}}"
+
+    proc = subprocess.run(
+        [
+            "fzf",
+            "--reverse",
+            "--delimiter", "\t",
+            "--header", "Id\tCharacter\tTai-lo\tDefinition\tExample",
+            "--preview", preview_cmd,
+            "--preview-window", "down:60%:wrap",
+        ],
+        input=lines,
+        text=True,
+    )
+    return proc.returncode
+
+
+# --- CLI -----------------------------------------------------------------
+
 def main():
     parser = argparse.ArgumentParser(
         description="Search dict-twblg.json / dict-twblg-ext.json entries."
     )
-    parser.add_argument("query", nargs="+", help="Search term (accents ignored)")
+    parser.add_argument("query", nargs="*", help="Search term (accents ignored)")
     parser.add_argument(
         "--files",
         nargs="+",
         default=DEFAULT_FILES,
         help=f"JSON files to search (default: {' '.join(DEFAULT_FILES)})",
     )
+    parser.add_argument("--id", action="store_true", help="Search by entry ID field")
     parser.add_argument("--hanji", action="store_true", help="Search only the character / Han-ji field")
     parser.add_argument("--tailo", action="store_true", help="Search only the Tai-lo pronunciation field")
     parser.add_argument("--example", action="store_true", help="Search only within example sentences")
     parser.add_argument("--json", action="store_true", help="Output raw JSON instead of formatted text")
     parser.add_argument("--limit", type=int, default=None, help="Limit the number of results shown")
+    parser.add_argument("--fzf", action="store_true", help="Interactive fuzzy search via fzf")
 
     args = parser.parse_args()
 
     records = get_records(args.files)
 
+    if args.fzf:
+        sys.exit(run_fzf(records, Path(__file__).resolve()))
+
+    if not args.query:
+        parser.error("query is required unless --fzf is used")
+
     fields = []
+    if args.id:
+        fields.append(ID)
     if args.hanji:
         fields.append(HANJI)
     if args.tailo:
