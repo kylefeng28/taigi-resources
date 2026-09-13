@@ -33,7 +33,11 @@ EXT_TYPES = {'單字不成詞者', '臺華共同詞'}
 DICT_MAIN_JSON = 'dict-twblg.json'
 DICT_EXT_JSON = 'dict-twblg-ext.json'
 
-def load_entries(data_dir, filename):
+type EntryId = str  # 詞目id
+type DefId = str  # 義項id
+type CsvRow = dict[str, str]
+
+def load_entries(data_dir, filename) -> dict[EntryId, CsvRow]:
     """Load entries csv → dict keyed by 詞目id."""
     entries = {}
     with open(os.path.join(data_dir, filename), encoding='utf-8') as f:
@@ -42,7 +46,7 @@ def load_entries(data_dir, filename):
     return entries
 
 
-def load_definitions(data_dir, filename):
+def load_definitions(data_dir, filename) -> dict[EntryId, list[CsvRow]]:
     """Load definitions csv → dict keyed by 詞目id → list of definitions."""
     defs = defaultdict(list)
     with open(os.path.join(data_dir, filename), encoding='utf-8') as f:
@@ -51,7 +55,7 @@ def load_definitions(data_dir, filename):
     return defs
 
 
-def load_examples(data_dir, filename):
+def load_examples(data_dir, filename) -> dict[tuple[EntryId, DefId], list[CsvRow]]:
     """Load examples csv → dict keyed by (詞目id, 義項id) → list of examples."""
     examples = defaultdict(list)
     with open(os.path.join(data_dir, filename), encoding='utf-8') as f:
@@ -64,7 +68,7 @@ def load_examples(data_dir, filename):
     return examples
 
 
-def format_example(row):
+def format_example(row: CsvRow) -> str:
     """Format an example row into the interlinear annotation string."""
     hanji = row[COL_HANZI]
     lomaji = row[COL_TAILO]
@@ -141,6 +145,7 @@ def build_dict(data_dir, variant, mandarin=None):
                 ex_rows = examples.get(ex_key, [])
                 if ex_rows:
                     d['example'] = [format_example(r) for r in ex_rows]
+                    d['example_audio_file'] = [r[COL_EXAMPLE_AUDIO_FILE] for r in ex_rows]
 
                 het_definitions.append(d)
 
