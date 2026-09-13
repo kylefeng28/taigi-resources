@@ -29,26 +29,30 @@ EXAMPLE_RE = re.compile("\ufff9(.*?)\ufffa(.*?)\ufffb(.*)", re.DOTALL)
 SUTIAU_MP3_DIR = "data/sutiau-mp3"
 LEKU_MP3_DIR = "data/leku-mp3"
 
-TYPE = "type"
-EXAMPLES = "examples"
-
-# Fields
+# JSON entry / definition fields
 ID =  "id"
 HANJI = "hanji"
 TAILO = "tailo"
+TYPE = "type"
 MANDARIN = "mandarin"
 EXAMPLE = "example"
 DEF = "def"
+AUDIO_FILE = "audio_file"
+EXAMPLE_AUDIO_FILE = "example_audio_file"
+
+# Record fields
+EXAMPLES = "examples"
+EXAMPLE_AUDIO_FILES = "example_audio_files"
 
 
-def strip_accents(text):
+def _strip_accents(decomposed):
     """Remove diacritics so â/á/à/etc. all normalize to a, etc."""
-    decomposed = unicodedata.normalize("NFD", text)
     return "".join(c for c in decomposed if unicodedata.category(c) != "Mn")
 
 
-def normalize(text):
-    return strip_accents(text).casefold()
+def normalize(text, strip_accents: bool):
+    nfd = unicodedata.normalize("NFD", text)
+    return _strip_accents(nfd).casefold() if strip_accents else nfd.casefold()
 
 
 def parse_example(raw):
@@ -61,17 +65,21 @@ def parse_example(raw):
     return {HANJI: raw, TAILO: "", MANDARIN: ""}
 
 
+def get_audio_path_prefix(id: str):
+    # e.g. 2003 -> 2, 20168 -> 20
+    return id[:-3]
+
 def audio_path(audio_file):
     if not audio_file:
         return None
-    return str(Path(SUTIAU_MP3_DIR, audio_file[:2], f"{audio_file}.mp3"))
+    return str(Path(SUTIAU_MP3_DIR, get_audio_path_prefix(audio_file), f"{audio_file}(1).mp3"))
 
 
 def example_audio_path(example_audio_file):
     if not example_audio_file:
         return None
-    prefix = example_audio_file.split("-")[0]
-    return str(Path(LEKU_MP3_DIR, prefix[:2], f"{example_audio_file}.mp3"))
+    prefix = get_audio_path_prefix(example_audio_file.split("-")[0])
+    return str(Path(LEKU_MP3_DIR, prefix, f"{example_audio_file}.mp3"))
 
 
 def load_entries(paths):
@@ -92,14 +100,14 @@ def build_records(entries):
     """Flatten entries into one record per definition."""
     records = []
     for entry in entries:
-        title = entry.get("title", "")
+        title = entry.get("title")
         for het in entry.get("heteronyms", []):
             tailo = het.get("trs", "")
-            audio_file = het.get("audio_file")
+            audio_file = het.get(AUDIO_FILE)
             het_id = het.get(ID)
             for defn in het.get("definitions", []):
                 examples = [parse_example(e) for e in defn.get(EXAMPLE, [])]
-                example_audio_files = defn.get("example_audio_file", [])
+                example_audio_files = defn.get(EXAMPLE_AUDIO_FILE, [])
                 records.append(
                     {
                         ID: het_id,
@@ -108,8 +116,8 @@ def build_records(entries):
                         TYPE: defn.get(TYPE, ""),
                         DEF: defn.get(DEF, ""),
                         EXAMPLES: examples,
-                        "audio_file": audio_path(audio_file),
-                        "example_audio_files": [
+                        AUDIO_FILE: audio_path(audio_file),
+                        EXAMPLE_AUDIO_FILES: [
                             example_audio_path(f) for f in example_audio_files
                         ],
                     }
@@ -125,9 +133,16 @@ def get_records(paths):
 
 # --- searching -----------------------------------------------------------
 
-def record_matches(record, query, fields):
+def syllable_match(query: str, text: str, strip_accents: bool):
+    q = re.escape(normalize(query, strip_accents))
+    t = normalize(text, strip_accents)
+
+    pattern = rf"(?<![a-z]){q}(?![a-z])"
+    return re.search(pattern, t) is not None
+
+def record_matches(record, query: str, fields: list[str], match_mode: str, strip_accents: bool):
     """Check whether the (accent-stripped) query appears in the chosen fields."""
-    q = normalize(query)
+    q = normalize(query, strip_accents)
 
     haystacks = []
     if ID in fields:
@@ -146,7 +161,14 @@ def record_matches(record, query, fields):
     if DEF in fields:
         haystacks.append(record[DEF])
 
-    return any(q in normalize(h) for h in haystacks if h)
+    if match_mode == "entire":
+        return any(q == normalize(h, strip_accents) for h in haystacks if h)
+    elif match_mode == "syllable":
+        return any(syllable_match(q, h, strip_accents) for h in haystacks if h)
+    elif match_mode == "substring":
+        return any(q in normalize(h, strip_accents) for h in haystacks if h)
+    else:
+        raise Exception("invalid match_mode " + match_mode)
 
 
 def print_record(record):
@@ -154,8 +176,8 @@ def print_record(record):
     if record[TYPE] or record[DEF]:
         print(f"  {record[TYPE]}: {record[DEF]}")
     if record["audio_file"]:
-        print(f"  audio_file: {record['audio_file']}")
-    for ex, ex_audio in zip(record[EXAMPLES], record["example_audio_files"] or [None] * len(record[EXAMPLES])):
+        print(f"  audio_file: {record[AUDIO_FILE]}")
+    for ex, ex_audio in zip(record[EXAMPLES], record[EXAMPLE_AUDIO_FILES] or [None] * len(record[EXAMPLES])):
         print("  example:")
         print(f"    hanji:    {ex[HANJI]}")
         print(f"    tai-lo:   {ex[TAILO]}")
@@ -213,6 +235,8 @@ def main():
     parser.add_argument("--json", action="store_true", help="Output raw JSON instead of formatted text")
     parser.add_argument("--limit", type=int, default=None, help="Limit the number of results shown")
     parser.add_argument("--fzf", action="store_true", help="Interactive fuzzy search via fzf")
+    parser.add_argument("--match", choices=["entire",  "substring", "syllable"], default="entire")
+    parser.add_argument("--no-strip-accents", action="store_false", dest="strip_accents")
 
     args = parser.parse_args()
 
@@ -238,7 +262,7 @@ def main():
 
     query = " ".join(args.query)
 
-    matches = [r for r in records if record_matches(r, query, fields)]
+    matches = [r for r in records if record_matches(r, query, fields, args.match, args.strip_accents)]
 
     if args.limit is not None:
         matches = matches[: args.limit]

@@ -1,4 +1,5 @@
 #!/bin/bash
-cat dict-twblg.json dict-twblg-ext.json \
-  | jq -r '.[] | .title as $t | .heteronyms[] | .id as $id | .trs as $r | .definitions[] | [$id, $t, $r[:20], .type, .def[:20]] | @tsv' \
-  | column -s $'\t' -t | fzf --reverse --header=$'Id\tCharacter\tTai-lo\tType\tDefinition'
+./get_jq.sh \
+  | jq -r '[.[0], .[1][:10], .[2][:20], .[3], .[4][:20]] | @tsv' \
+  | column -s $'\t' -t \
+  | fzf --reverse --header=$'Id\tCharacter\tTai-lo\tType\tDefinition'
