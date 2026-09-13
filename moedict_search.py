@@ -66,8 +66,8 @@ def parse_example(raw):
 
 
 def get_audio_path_prefix(id: str):
-    # e.g. 2003 -> 2, 20168 -> 20
-    return id[:-3]
+    # e.g. 2003 -> 2, 20168 -> 20, 312 -> 0
+    return id[:-3] or "0"
 
 def audio_path(audio_file):
     if not audio_file:
