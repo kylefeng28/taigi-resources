@@ -44,4 +44,4 @@ The most commonly used ones are [Pe̍h-ōe-jī (POJ)](https://en.wikipedia.org/w
 ## Tampermonkey/Greasemonkey user scripts
 Install [Tampermonkey](https://www.tampermonkey.net/) for Chrome or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for Firefox
 
-- MoE Dictionary of Frequently-Used Taiwanese Taigi: [moe_taigi_sutian.user.js](https://raw.githubusercontent.com/kylefeng28/taigi-resources/refs/heads/main/moe_taigi_sutian.user.js): adds audio links to audio play buttons
+- MoE Dictionary of Frequently-Used Taiwanese Taigi: [userscripts/moe_taigi_sutian.user.js](https://raw.githubusercontent.com/kylefeng28/taigi-resources/refs/heads/main/userscripts/moe_taigi_sutian.user.js): adds audio links to audio play buttons
