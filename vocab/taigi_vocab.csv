@@ -1,36 +1,50 @@
 ﻿Category,Taiwanese,Tai-lo,Mandarin,English
+Survival basics,你好,lí-hó,你好,hello
+Survival basics,食飽未,tsia̍h-pá--buē,吃飽了嗎,have you eaten? (greeting)
+Survival basics,多謝,to-siā,謝謝,thank you
+Survival basics,毋免客氣,m̄-bián kheh-khì,不客氣,you're welcome
+Survival basics,歹勢,pháinn-sè,不好意思,sorry (informal); embarrassed
+Survival basics,再會,tsài-huē,再見,goodbye
+Survival basics,明仔載見,bîn-á-tsài kìnn,明天見,see you tomorrow
+Survival basics,你食飽未,lí tsia̍h-pá--buē,你吃飽了沒,have you eaten yet?
+Survival basics,你咧創啥,lí leh tshòng siánn,你在做什麼,what are you doing?
+Survival basics,你會曉講台語無,lí ē-hiáu kóng Tâi-gí--bô,你會說台語嗎,can you speak Taiwanese?
+Survival basics,我聽無,guá thiann-bô,我聽不懂,I don't understand (hearing)
+Survival basics,我毋知,guá m̄-tsai,我不知道,I don't know
+Survival basics,好,hó,好,good; okay
+Survival basics,毋好,m̄-hó,不好,not good; don't
+Survival basics,會使無,ē-sái--bô,可以嗎,is it okay?
+Survival basics,無問題,bô-būn-tê,沒問題,no problem
+Survival basics,等一下,tán--tsi̍t-ē,等一下,wait a moment
+Survival basics,敢,kám,難道；反問語氣,question particle (yes/no)
+Survival basics,乎,--honnh,呵（語尾）,sentence-final tag (right?)
 Pronouns,我,guá,我,I; me
-Pronouns,你,lí,你,you (sg.)
+Pronouns,你,lí,你,you (singular)
 Pronouns,伊,i,他/她/它,he; she; it
-Pronouns,阮,guán,我們(不含聽話者),we/us (excl.)
-Pronouns,咱,lán,咱們(含聽話者),we/us (incl.)
-Pronouns,恁,lín,你們,you (pl.)
+Pronouns,阮,guán,我們(不含聽話者),we/us (exclusive)
+Pronouns,咱,lán,咱們(含聽話者),we/us (inclusive)
+Pronouns,恁,lín,你們,you (plural)
 Pronouns,𪜶,in,他們,they; them
 Pronouns,我的,guá ê,我的,my; mine
 Pronouns,你的,lí ê,你的,your; yours
 Pronouns,家己,ka-kī,自己,oneself
 Pronouns,逐家,ta̍k-ke,大家,everyone
-Pronouns,別人,pa̍t-lâng,別人,other people
-Numbers,空,khòng,零,zero
-Numbers,一,tsi̍t,一,one
-Numbers,二,nn̄g,二/兩,two
-Numbers,三,sann,三,three
-Numbers,四,sì,四,four
-Numbers,五,gōo,五,five
-Numbers,六,la̍k,六,six
-Numbers,七,tshit,七,seven
-Numbers,八,peh,八,eight
-Numbers,九,káu,九,nine
-Numbers,十,tsa̍p,十,ten
-Numbers,十一,tsa̍p-it,十一,eleven
-Numbers,二十,jī-tsa̍p,二十,twenty
-Numbers,三十,sann-tsa̍p,三十,thirty
-Numbers,一百,tsi̍t-pah,一百,one hundred
-Numbers,一千,tsi̍t-tshing,一千,one thousand
-Numbers,一萬,tsi̍t-bān,一萬,ten thousand
-Numbers,第一,tē-it,第一,first (ordinal)
-Numbers,幾,kuí,幾,how many (small number)
-Numbers,半,puàn,半,half
+Grammar,真,tsin,很,very
+Grammar,這个,tsit--ê,這個,"this (modifier, e.g. this X)"
+Grammar,彼个,hit--ê,那個,"that (modifier, e.g. that X)"
+Grammar,這,tse,這,this (standalone, "this thing")
+Grammar,彼,he,那,that (standalone, "that thing")
+Grammar,有,ū,有,have; there is
+Grammar,無,bô,沒有,don't have; there isn't
+Grammar,毋,m̄,不 (否定),not (general negation)
+Grammar,是,sī,是,to be (is/am/are)
+Grammar,毋是,m̄-sī,不是,is not
+Grammar,著,tio̍h,對；是,right; correct; yes (agreement)
+Grammar,毋著,m̄-tio̍h,不對,wrong; not right
+Grammar,的,ê,的,possessive/attributive particle
+Grammar,咧,teh,在（進行）,progressive particle (-ing)
+Grammar,矣,--ah,了（語尾）,sentence-final change-of-state particle
+Grammar,个,ê,個,generic classifier
 Question words,啥物,siánn-mih,什麼,what
 Question words,啥人,siánn-lâng,誰,who
 Question words,佗位,tó-uī,哪裡,where
@@ -43,32 +57,168 @@ Question words,偌濟,guā-tsē,多少,how much/many
 Question words,偌濟錢,guā-tsē tsînn,多少錢,how much money
 Question words,哪一个,tó tsi̍t ê,哪一個,which one
 Question words,為啥物,uī-siánn-mih,為什麼,why
-Demonstratives,這个,tsit--ê,這個,"this (modifier, e.g. this X)"
-Demonstratives,彼个,hit--ê,那個,"that (modifier, e.g. that X)"
-Demonstratives,這,tse,這,this (standalone)
-Demonstratives,彼,he,那,that (standalone)
-Demonstratives,遮,tsia,這裡,here
-Demonstratives,遐,hia,那裡,there
-Demonstratives,所在,sóo-tsāi,地方,place
-Demonstratives,頂面,tíng-bīn,上面,on top of; above
-Demonstratives,下跤,ē-kha,下面,under; below
-Demonstratives,內底,lāi-té,裡面,inside
-Demonstratives,外口,guā-kháu,外面,outside
-Demonstratives,邊仔,pinn--á,旁邊,next to; beside
-Demonstratives,頭前,thâu-tsîng,前面,in front
-Demonstratives,後壁,āu-piah,後面,behind
-Demonstratives,正手爿,tsiànn-tshiú-pîng,右邊,right side
-Demonstratives,倒手爿,tò-tshiú-pîng,左邊,left side
-Demonstratives,中央,tiong-ng,中間,middle
+Question words,佇佗位,tī tó-uī,在哪裡,where (at)?
+Question words,佇,tī,在,at; in; on (location)
+Question words,遮,tsia,這裡,here
+Question words,遐,hia,那裡,there
+Question words,所在,sóo-tsāi,地方,place
+Question words,物件,mi̍h-kiānn,東西,thing; object
+Numbers,一,tsi̍t,一,one
+Numbers,兩,nn̄g,二/兩,two
+Numbers,三,sann,三,three
+Numbers,四,sì,四,four
+Numbers,五,gōo,五,five
+Numbers,六,la̍k,六,six
+Numbers,七,tshit,七,seven
+Numbers,八,peh,八,eight
+Numbers,九,káu,九,nine
+Numbers,十,tsa̍p,十,ten
+Numbers,百,pah,百,hundred
+Numbers,千,tshing,千,thousand
+Numbers,萬,bān,萬,ten thousand
+Numbers,幾,kuí,幾,how many (small number)
+Food and drink,腹肚枵,pak-tóo-iau,肚子餓,hungry
+Food and drink,喙焦,tshuì-ta,口渴,thirsty
+Food and drink,食飽,tsia̍h-pá,飽,full (after eating)
+Food and drink,食飯,tsia̍h-pn̄g,吃飯,eat (a meal)
+Food and drink,啉水,lim tsuí,喝水,drink water
+Food and drink,水,tsuí,水,water
+Food and drink,茶,tê,茶,tea
+Food and drink,咖啡,ka-pi,咖啡,coffee
+Food and drink,啉茶,lim tê,喝茶,drink tea
+Food and drink,啉酒,lim tsiú,喝酒,drink alcohol
+Food and drink,啉,lim,喝,to drink
+Food and drink,飯,pn̄g,飯,cooked rice; meal
+Food and drink,麵,mī,麵,noodles
+Food and drink,好食,hó-tsia̍h,好吃,tasty
+Food and drink,牛奶,gû-ling,牛奶,milk
+Food and drink,酒,tsiú,酒,alcohol
+Food and drink,肉,bah,肉,meat
+Food and drink,豬肉,ti-bah,豬肉,pork
+Food and drink,雞,ke,雞,chicken
+Food and drink,魚,hî,魚,fish
+Food and drink,菜,tshài,菜,vegetable; dish
+Food and drink,水果,tsuí-kó,水果,fruit
+Food and drink,雞卵,ke-nn̄g,雞蛋,egg
+Food and drink,糖,thn̂g,糖,sugar
+Food and drink,鹽,iâm,鹽,salt
+Food and drink,麭,pháng,麵包,bread
+Food and drink,湯,thng,湯,soup
+Verbs,看,khuànn,看,to see; watch
+Verbs,聽,thiann,聽,to listen; hear
+Verbs,講,kóng,說,to speak; say
+Verbs,去,khì,去,to go
+Verbs,來,lâi,來,to come
+Verbs,轉,tńg,回,to return; turn
+Verbs,行,kiânn,走,to walk
+Verbs,走,tsáu,跑,to run
+Verbs,徛,khiā,站,to stand
+Verbs,坐,tsē,坐,to sit
+Verbs,睏,khùn,睡覺,to sleep
+Verbs,精神,tsing-sîn,醒來,to wake up
+Verbs,讀,tha̍k,讀,to read
+Verbs,問,mn̄g,問,to ask
+Family & people,人,lâng,人,person; people
+Family & people,朋友,pîng-iú,朋友,friend
+Family & people,囝,kiánn,兒女;孩子,child; emphasizes parental relationship; usually as a suffix
+Family & people,囡仔,gín-á,小孩,child or young person in a general sense (e.g. 囡仔人 gín-á-lâng)
+Family & people,查某人,tsa-bóo-lâng,女人,woman
+Family & people,查埔人,tsa-poo-lâng,男人,man
+Everyday words,欲,beh,要,want to; going to
+Everyday words,佮意,kah-ì,喜歡,to like
+Everyday words,愛,ài,愛; 想要,to want; to love
+Adjectives,媠,suí,漂亮,pretty; beautiful
+Adjectives,忝,thiám,累,tired; exhausted
+Adjectives,歡喜,huann-hí,高興,happy
+Adjectives,受氣,siū-khì,生氣,angry
+Adjectives,快樂,khuài-lo̍k,快樂,joyful
+Adjectives,傷心,siong-sim,傷心,sad
+Adjectives,感謝,kám-siā,感謝,thankful; grateful
+Adjectives,無要緊,bô iàu-kín,沒關係,it's okay; no problem
+Adjectives,辛苦矣,sin-khóo--ah,辛苦了,thanks for your hard work
+Adjectives,無閒,bô-îng,忙,busy
+Adjectives,無聊,bô-liâu,無聊,bored; boring
 Time,這馬,tsit-má,現在,now
 Time,時陣,sî-tsūn,時候,time; moment
 Time,今仔日,kin-á-ji̍t,今天,today
 Time,昨昏,tsa-hng,昨天,yesterday
 Time,明仔載,bîn-á-tsài,明天,tomorrow
-Time,後日,āu--ji̍t,後天,the day after tomorrow
-Time,大前日,tuā-tsîng-ji̍t,大前天,three days ago
-Time,今仔早,kin-á-tsái,今天早上,this morning
-Time,昨昏暗,tsa-hng-àm,昨晚,last night
+Clothes,穿,tshīng,穿,to wear
+Clothes,穿衫,tshīng sann,穿衣服,to wear clothes
+Clothes,衫,sann,衣服,clothes
+Clothes,褲,khòo,褲子,pants
+Clothes,鞋,ê,鞋子,shoes
+Everyday words,有閒,ū-îng,有空,free (time)
+Everyday words,上班,siōng-pan,上班,to go to work
+Everyday words,落班,lo̍h-pan,下班,to get off work
+Everyday words,起床,khí-tshn̂g,起床,to get out of bed
+Everyday words,洗身軀,sé-sin-khu,洗澡,to take a shower/bath
+Everyday words,逐工,ta̍k-kang,每天,every day
+Everyday words,有時,ū-sî,有時,sometimes
+Adjectives,懸,kuân,高,tall; high
+Adjectives,矮,é,矮,short (height)
+Adjectives,長,tn̂g,長,long
+Adjectives,短,té,短,short (length)
+Adjectives,大,tuā,大,big
+Adjectives,細,sè,小,small
+Adjectives,濟,tsē,多,many; much
+Adjectives,少,tsió,少,few; little
+Adjectives,新,sin,新,new
+Adjectives,舊,kū,舊,old (things)
+Adjectives,老,lāu,老,old (people)
+Adjectives,少年,siàu-liân,年輕,young
+Adjectives,燒,sio,熱,hot
+Adjectives,冷,líng,冷,cold
+Adjectives,熱,jua̍h,熱,hot (weather)
+Adjectives,簡單,kán-tan,簡單,simple; easy
+Adjectives,困難,khùn-lân,困難,difficult
+Adjectives,𠢕,gâu,厲害; 能幹,skillful; capable
+Adjectives,早,tsá,早,early
+Adjectives,晏,uànn,晚,late
+Adjectives,緊,kín,快,hurry; fast
+Adjectives,慢,bān,慢,slow
+Comparatives & adverbs,較濟,khah-tsē,更多,more
+Comparatives & adverbs,較少,khah-tsió,更少,less
+Comparatives & adverbs,較大,khah-tuā,更大,bigger
+Comparatives & adverbs,較細,khah-sè,更小,smaller
+Comparatives & adverbs,一寡,--tsi̍t-kuá,一些,some; a few
+Comparatives & adverbs,較濟一寡,khah-tsē--tsi̍t-kuá,更多一些,a bit more (quantity)
+Comparatives & adverbs,較少一寡,khah-tsió--tsi̍t-kuá,更少一些,a bit less (quantity)
+Places & directions,厝,tshù,家; 房子,house; home
+Places & directions,學校,ha̍k-hāu,學校,school
+Places & directions,公司,kong-si,公司,company
+Places & directions,公園,kong-hn̂g,公園,park
+Shopping & money,錢,tsînn,錢,money
+Shopping & money,價數,kè-siàu,價格,price
+Shopping & money,俗,sio̍k,便宜,cheap
+Shopping & money,貴,kuì,貴,expensive
+Time,早起,tsá-khí,早上,morning
+Time,中晝,tiong-tàu,中午,noon
+Time,下晡,ē-poo,下午,afternoon
+Time,暗時,àm-sî,晚上,evening; night
+Time,暝,mê,夜,night
+Time,禮拜,lé-pài,星期,week
+Time,工,kang,日,counter for days
+Time,月,gue̍h,月,month
+Time,年,nî,年,year
+Time,點鐘,tiám-tsing,點鐘,o'clock; hour
+Time,分鐘,hun-tsing,分鐘,minute
+Grammar,想欲,siūnn-beh,想要,would like to
+Grammar,會使,ē-sái,可以,can; may
+Grammar,袂使,bē-sái,不可以,can't; may not
+Grammar,會曉,ē-hiáu,會 (懂得),know how to
+Grammar,袂曉,bē-hiáu,不會,don't know how to
+Grammar,嘛,mā,也,also; too
+Grammar,攏,lóng,都,all; entirely
+Grammar,攏總,lóng-tsóng,全部,all; everything; totally
+Food & drink,煮食,tsú-tsia̍h,煮飯; 做飯,to cook
+Food & drink,甜,tinn,甜,sweet
+Food & drink,鹹,kiâm,鹹,salty
+Food & drink,汫,tsiánn,淡,bland; not salty
+Food & drink,苦,khóo,苦,bitter
+Food & drink,辣,lua̍h,辣,spicy hot
+Food & drink,酸,sng,酸,sour
+Food & drink,芳,phang,香,fragrant; smells good
 Time,頂禮拜,tíng-lé-pài,上禮拜,last week
 Time,這禮拜,tsit-lé-pài,這禮拜,this week
 Time,後禮拜,āu-lé-pài,下禮拜,next week
@@ -78,247 +228,85 @@ Time,後個月,āu-kò-gue̍h,下個月,next month
 Time,舊年,kū-nî,去年,last year
 Time,今年,kin-nî,今年,this year
 Time,明年,mê-nî,明年,next year
-Time,早起,tsá-khí,早上,morning
-Time,中晝,tiong-tàu,中午,noon
-Time,下晡,ē-poo,下午,afternoon
-Time,暗時,àm-sî,晚上,evening; night
-Time,暝,mê,夜,night
-Time,禮拜,lé-pài,星期,week
-Time,月,gue̍h,月,month
-Time,年,nî,年,year
-Time,點鐘,tiám-tsing,點鐘,o'clock; hour
-Time,分鐘,hun-tsing,分鐘,minute
-Grammar/Modal,欲,beh,要,want to; going to
-Grammar/Modal,想欲,siūnn-beh,想要,would like to
-Grammar/Modal,會使,ē-sái,可以,can; may
-Grammar/Modal,袂使,bē-sái,不可以,can't; may not
-Grammar/Modal,會曉,ē-hiáu,會 (懂得),know how to
-Grammar/Modal,袂曉,bē-hiáu,不會,don't know how to
-Grammar/Modal,有,ū,有,have; there is
-Grammar/Modal,無,bô,沒有,don't have; there isn't
-Grammar/Modal,是,sī,是,to be (is/am/are)
-Grammar/Modal,毋是,m̄-sī,不是,is not
-Grammar/Modal,嘛,mā,也,also; too
-Grammar/Modal,攏,lóng,都,all; entirely
-Grammar/Modal,攏總,lóng-tsóng,全部,all; everything; totally
-Grammar/Modal,若,nā,如果,if
-Grammar/Modal,因為,in-uī,因為,because
-Grammar/Modal,所以,sóo-í,所以,so; therefore
-Grammar/Modal,才,tsiah,才,only then
-Grammar/Modal,就,tō,就,then; immediately
-Grammar/Modal,傷,siunn,太,too (excessive)
-Grammar/Modal,較,khah,更,more (comparative)
-Grammar/Modal,上,siōng,最,most (superlative)
-Grammar/Modal,定定,tiānn-tiānn,常常,often
-Grammar/Modal,有時仔,ū-sî-á,有時候,sometimes
-Grammar/Modal,永遠,íng-uán,永遠,forever
-Grammar/Modal,已經,í-king,已經,already
-Grammar/Modal,猶未,iáu-buē,還沒,not yet
-Grammar/Modal,猶閣,iáu-koh,還; 仍然,still
-Grammar/Modal,毋通,m̄-thang,不要; 不可,must not; don't
-Grammar/Modal,免,bián,不用,no need to
-Grammar/Modal,毋,m̄,不 (否定),not (general negation)
-Comparative pattern,較濟一寡,khah-tsē--tsi̍t-kuá,更多一些,a bit more (quantity)
-Comparative pattern,較少一寡,khah-tsió--tsi̍t-kuá,更少一些,a bit less (quantity)
-Comparative pattern,較大一寡,khah-tuā--tsi̍t-kuá,更大一些,a bit bigger
-Comparative pattern,較細一寡,khah-sè--tsi̍t-kuá,更小一些,a bit smaller
-Comparative pattern,較好一寡,khah-hó--tsi̍t-kuá,更好一些,a bit better
-Comparative pattern,一寡,--tsi̍t-kuá,一些,some; a few
-Food & Drink,食飯,tsia̍h-pn̄g,吃飯,eat (a meal)
-Food & Drink,啉,lim,喝,to drink
-Food & Drink,啉水,lim tsuí,喝水,drink water
-Food & Drink,啉茶,lim tê,喝茶,drink tea
-Food & Drink,啉酒,lim tsiú,喝酒,drink alcohol
-Food & Drink,飯,pn̄g,飯,cooked rice; meal
-Food & Drink,麵,mī,麵,noodles
-Food & Drink,水,tsuí,水,water
-Food & Drink,茶,tê,茶,tea
-Food & Drink,咖啡,ka-pi,咖啡,coffee
-Food & Drink,牛奶,gû-ling,牛奶,milk
-Food & Drink,酒,tsiú,酒,alcohol
-Food & Drink,肉,bah,肉,meat
-Food & Drink,豬肉,ti-bah,豬肉,pork
-Food & Drink,雞肉,ke-bah,雞肉,chicken (meat)
-Food & Drink,魚,hî,魚,fish
-Food & Drink,菜,tshài,菜,vegetable; dish
-Food & Drink,水果,tsuí-kó,水果,fruit
-Food & Drink,雞卵,ke-nn̄g,雞蛋,egg
-Food & Drink,糖,thn̂g,糖,sugar
-Food & Drink,鹽,iâm,鹽,salt
-Food & Drink,麭,pháng,麵包,bread
-Food & Drink,湯,thng,湯,soup
-Food & Drink,枵,iau,餓,hungry
-Food & Drink,喙焦,tshuì-ta,口渴,thirsty
-Food & Drink,飽,pá,飽,full (after eating)
-Food & Drink,好食,hó-tsia̍h,好吃,tasty
-Food & Drink,煮食,tsú-tsia̍h,煮飯; 做飯,to cook
-Common verbs,去,khì,去,to go
-Common verbs,來,lâi,來,to come
-Common verbs,轉去,tńg--khì,回去,to go back
-Common verbs,轉來,tńg--lâi,回來,to come back
-Common verbs,轉去厝,tńg-khì tshù,回家,return home
-Common verbs,我轉來矣,guá tńg--lâi--ah,我回來了,I'm home / I've come back
-Common verbs,上車,tsiūnn-tshia,上車,get on a vehicle
-Common verbs,落車,lo̍h-tshia,下車,get off a vehicle
-Common verbs,行,kiânn,走,to walk
-Common verbs,走,tsáu,跑,to run
-Common verbs,徛,khiā,站,to stand
-Common verbs,坐,tsē,坐,to sit
-Common verbs,睏,khùn,睡覺,to sleep
-Common verbs,精神,tsing-sîn,醒來,to wake up
-Common verbs,看,khuànn,看,to see; watch
-Common verbs,聽,thiann,聽,to listen; hear
-Common verbs,講,kóng,說,to speak; say
-Common verbs,問,mn̄g,問,to ask
-Common verbs,應,ìn,回答,to answer
-Common verbs,寫,siá,寫,to write
-Common verbs,讀,tha̍k,讀,to read
-Common verbs,買,bé,買,to buy
-Common verbs,賣,bē,賣,to sell
-Common verbs,提,the̍h,拿,to take; hold
-Common verbs,予,hōo,給,to give
-Common verbs,討,thó,要; 討,to ask for
-Common verbs,揣,tshuē,找,to look for
-Common verbs,拍,phah,打,to hit
-Common verbs,做,tsò,做,to do; make
-Common verbs,做工,tsò-kang,工作,to work
-Common verbs,讀冊,tha̍k-tsheh,讀書; 上學,to study; go to school
-Common verbs,耍,sńg,玩,to play
-Common verbs,等,tán,等,to wait
-Common verbs,知,tsai,知道,to know
-Common verbs,毋知,m̄ tsai,不知道,don't know
-Common verbs,會記得,ē-kì--tit,記得,to remember
-Common verbs,袂記得,bē-kì-tit,忘記,to forget
-Common verbs,驚,kiann,怕,to be afraid
-Common verbs,笑,tshiò,笑,to laugh; smile
-Common verbs,哭,khàu,哭,to cry
-Common verbs,洗,sé,洗,to wash
-Common verbs,沐浴,bo̍k-i̍k,洗澡,to bathe; shower
-Common verbs,開,khui,開,to open
-Common verbs,關,kuainn,關,to close
-Common verbs,起造,khí-tsō,建造,to build
-Common verbs,修理,siu-lí,修理,to repair
-Common verbs,送,sàng,送,to send; give as gift
-Common verbs,借,tsioh,借,to borrow; to lend
-Common verbs,還,hîng,還,to return (something)
-Feelings & liking,佮意,kah-ì,喜歡,to like
-Feelings & liking,愛,ài,愛; 想要,to love; to want
-Feelings & liking,怨恨,uàn-hūn,討厭; 怨恨,to hate; resent
-Feelings & liking,歡喜,huann-hí,高興,happy
-Feelings & liking,受氣,siū-khì,生氣,angry
-Feelings & liking,煩惱,huân-ló,煩惱,worried
-Feelings & liking,驚惶,kiann-hiânn,害怕,scared
-Feelings & liking,艱苦,kan-khóo,難受; 辛苦,uncomfortable; unwell
-Feelings & liking,快樂,khuài-lo̍k,快樂,joyful
-Feelings & liking,傷心,siong-sim,傷心,sad
-Feelings & liking,感謝,kám-siā,感謝,thank; grateful
-Feelings & liking,歹勢,pháinn-sè,不好意思,embarrassed; sorry (informal)
-Feelings & liking,無要緊,bô iàu-kín,沒關係,it's okay; no problem
-Feelings & liking,辛苦矣,sin-khóo--ah,辛苦了,thanks for your hard work
-Greetings & phrases,你好,lí-hó,你好,hello
-Greetings & phrases,食飽未,tsia̍h-pá--buē,吃飽了嗎,have you eaten? (greeting)
-Greetings & phrases,多謝,to-siā,謝謝,thank you
-Greetings & phrases,毋免客氣,m̄-bián kheh-khì,不客氣,you're welcome
-Greetings & phrases,歹勢,pháinn-sè,抱歉; 不好意思,sorry; excuse me
-Greetings & phrases,對不起,tuì-put-khí,對不起,I'm sorry (formal)
-Greetings & phrases,再會,tsài-huē,再見,goodbye
-Greetings & phrases,明仔載見,bîn-á-tsài kìnn,明天見,see you tomorrow
-Greetings & phrases,你食飽未,lí tsia̍h-pá--buē,你吃飽了沒,have you eaten yet?
-Greetings & phrases,你咧創啥,lí leh tshòng siánn,你在做什麼,what are you doing?
-Greetings & phrases,你會曉講台語無,lí ē-hiáu kóng Tâi-gí--bô,你會說台語嗎,can you speak Taiwanese?
-Greetings & phrases,我聽無,guá thiann-bô,我聽不懂,I don't understand (hearing)
-Greetings & phrases,我毋知,guá m̄-tsai,我不知道,I don't know
-Greetings & phrases,好,hó,好,good; okay
-Greetings & phrases,毋好,m̄-hó,不好,not good; don't
-Greetings & phrases,會使無,ē-sái--bô,可以嗎,is it okay?
-Greetings & phrases,當然,tong-jiân,當然,of course
-Greetings & phrases,無問題,bô-būn-tê,沒問題,no problem
-Greetings & phrases,等一下,tán--tsi̍t-ē,等一下,wait a moment
-Greetings & phrases,緊,kín,快,hurry; fast
-Greetings & phrases,慢,bān,慢,slow
-Shopping & money,錢,tsînn,錢,money
-Shopping & money,價數,kè-siàu,價格,price
-Shopping & money,俗,sio̍k,便宜,cheap
-Shopping & money,貴,kuì,貴,expensive
-Shopping & money,算便宜咧,sǹg sio̍k--leh,算便宜一點,give me a discount
-Shopping & money,找錢,tsāu-tsînn,找錢,give change
-Shopping & money,店,tiàm,店,shop; store
-Shopping & money,市場,tshī-tiûnn,市場,market
-Shopping & money,買物件,bé mi̍h-kiānn,買東西,to shop; buy things
-Shopping & money,物件,mi̍h-kiānn,東西,thing; object
-Shopping & money,收據,siu-kì,收據,receipt
-Shopping & money,現金,hiān-kim,現金,cash
-Shopping & money,信用卡,sìn-iōng-khah,信用卡,credit card
-Colors,紅色,âng-sik,紅色,red
-Colors,烏色,oo-sik,黑色,black
-Colors,白色,pe̍h-sik,白色,white
-Colors,黃色,n̂g-sik,黃色,yellow
-Colors,青色,tshinn-sik,綠色/藍色,green/blue
-Colors,紫色,tsí-sik,紫色,purple
-Colors,咖啡色,ka-pi-sik,咖啡色,brown
-Colors,灰色,hue-sik,灰色,gray
-Opposites: adjectives,懸,kuân,高,tall; high
-Opposites: adjectives,矮,é,矮,short (height)
-Opposites: adjectives,長,tn̂g,長,long
-Opposites: adjectives,短,té,短,short (length)
-Opposites: adjectives,大,tuā,大,big
-Opposites: adjectives,細,sè,小,small
-Opposites: adjectives,濟,tsē,多,many; much
-Opposites: adjectives,少,tsió,少,few; little
-Opposites: adjectives,新,sin,新,new
-Opposites: adjectives,舊,kū,舊,old (things)
-Opposites: adjectives,老,lāu,老,old (people)
-Opposites: adjectives,少年,siàu-liân,年輕,young
-Opposites: adjectives,緊,kín,快,fast
-Opposites: adjectives,慢,bān,慢,slow
-Opposites: adjectives,燒,sio,熱,hot
-Opposites: adjectives,冷,líng,冷,cold
-Opposites: adjectives,熱天,jua̍h-thinn,熱; 夏天氣候,hot weather
-Opposites: adjectives,厚,kāu,厚,thick
-Opposites: adjectives,薄,po̍h,薄,thin (objects)
-Opposites: adjectives,肥,puî,胖,fat
-Opposites: adjectives,瘦,sán,瘦,thin (people)
-Opposites: adjectives,重,tāng,重,heavy
-Opposites: adjectives,輕,khin,輕,light (weight)
-Opposites: adjectives,闊,khuah,寬,wide
-Opposites: adjectives,狹,e̍h,窄,narrow
-Opposites: adjectives,深,tshim,深,deep
-Opposites: adjectives,淺,tshián,淺,shallow
-Opposites: adjectives,清氣,tshing-khì,乾淨,clean
-Opposites: adjectives,垃圾,lah-sap,髒,dirty
-Opposites: adjectives,簡單,kán-tan,簡單,simple; easy
-Opposites: adjectives,困難,khùn-lân,困難,difficult
-Opposites: adjectives,𠢕,gâu,厲害; 能幹,skillful; capable
-Opposites: adjectives,軟,nńg,軟,soft
-Opposites: adjectives,硬,ngē,硬,hard (texture)
-Opposites: adjectives,光,kng,亮,bright
-Opposites: adjectives,暗,àm,暗,dark
-Opposites: adjectives,遠,hn̄g,遠,far
-Opposites: adjectives,近,kīn,近,near
-Opposites: adjectives,早,tsá,早,early
-Opposites: adjectives,晏,uànn,晚,late
-Opposites: adjectives,媠,suí,漂亮,pretty; beautiful
-Opposites: adjectives,䆀,bái,醜,ugly
-Family,老爸,lāu-pē,爸爸,father
-Family,老母,lāu-bú,媽媽,mother
-Family,阿爸,a-pah,爸爸(暱稱),dad
-Family,阿母,a-bú,媽媽(暱稱),mom
-Family,查埔囝,tsa-poo-kiánn,兒子,son
-Family,查某囝,tsa-bóo-kiánn,女兒,daughter
-Family,囝仔,gín-á,小孩,child
-Family,兄,hiann,哥哥,older brother
-Family,小弟,sió-tī,弟弟,younger brother
-Family,姊,tsí,姊姊,older sister
-Family,小妹,sió-muē,妹妹,younger sister
-Family,阿公,a-kong,爺爺/外公,grandfather
-Family,阿媽,a-má,奶奶/外婆,grandmother
-Family,翁,ang,丈夫,husband
-Family,某,bóo,妻子,wife
-Family,朋友,pîng-iú,朋友,friend
-Family,厝內人,tshù-lāi-lâng,家人,family members
-Family,阿舅,a-kū,舅舅,maternal uncle
-Family,阿姨,a-î,阿姨,aunt (maternal)
-Family,後生,hāu-senn,兒子(較文言),son (formal)
+Verbs,轉去,tńg--khì,回去,to go back
+Verbs,轉來,tńg--lâi,回來,to come back
+Verbs,轉去厝,tńg-khì tshù,回家,return home
+Verbs,我轉來矣,guá tńg--lâi--ah,我回來了,I'm home / I've come back
+Verbs,上車,tsiūnn-tshia,上車,get on a vehicle
+Verbs,落車,lo̍h-tshia,下車,get off a vehicle
+Verbs,應,ìn,回答,to answer
+Verbs,寫,siá,寫,to write
+Verbs,買,bé,買,to buy
+Verbs,賣,bē,賣,to sell
+Verbs,提,the̍h,拿,to take; hold
+Verbs,予,hōo,給,to give
+Verbs,討,thó,要; 討,to ask for
+Verbs,揣,tshuē,找,to look for
+Verbs,拍,phah,打,to hit
+Verbs,做,tsò,做,to do; make
+Verbs,做工,tsò-kang,工作,to work
+Verbs,讀冊,tha̍k-tsheh,讀書; 上學,to study; go to school
+Verbs,𨑨迌,tshit-thô,玩; 遊玩,to have fun; play; amuse oneself
+Verbs,等,tán,等,to wait
+Verbs,知,tsai,知道,to know
+Verbs,毋知,m̄ tsai,不知道,don't know
+Verbs,會記得,ē-kì--tit,記得,to remember
+Verbs,袂記得,bē-kì-tit,忘記,to forget
+Verbs,開,khui,開,to open
+Verbs,關,kuainn,關,to close
+Verbs,驚,kiann,怕,to be afraid
+Verbs,笑,tshiò,笑,to laugh; smile
+Verbs,哭,khàu,哭,to cry
+Verbs,掃,sàu,掃,to sweep
+Verbs,煮,tsú,煮,to cook; boil
+Verbs,炒,tshá,炒,to stir-fry
+Verbs,煎,tsian,煎,to pan-fry
+Verbs,唱歌,tshiùnn-kua,唱歌,to sing
+Verbs,畫,uē,畫,to draw; paint
+Verbs,補,póo,補,to mend; patch
+Verbs,款,khuán,收拾,to tidy; pack
+Verbs,搝,khiú,拉,to pull
+Food & drink,臭,tshàu,臭,smelly
+Food & drink,油,iû,油,oil; greasy
+Food & drink,燒烙,sio-lō,溫暖,warm (comforting)
+Food & drink,涼,liâng,涼,cool
+Food & drink,凊,tshìn,冰涼,cold to the touch
+Family & people,老爸,lāu-pē,爸爸,father
+Family & people,老母,lāu-bú,媽媽,mother
+Family & people,阿爸,a-pah,爸爸(暱稱),dad
+Family & people,阿母,a-bú,媽媽(暱稱),mom
+Family & people,查埔囝,tsa-poo-kiánn,兒子,son
+Family & people,查某囝,tsa-bóo-kiánn,女兒,daughter
+Family & people,兄,hiann,哥哥,older brother
+Family & people,小弟,sió-tī,弟弟,younger brother
+Family & people,姊,tsí,姊姊,older sister
+Family & people,小妹,sió-muē,妹妹,younger sister
+Family & people,阿公,a-kong,爺爺/外公,grandfather
+Family & people,阿媽,a-má,奶奶/外婆,grandmother
+Family & people,翁,ang,丈夫,husband
+Family & people,某,bóo,妻子,wife
+Family & people,厝內人,tshù-lāi-lâng,家人,family members
+Family & people,阿舅,a-kū,舅舅,maternal uncle
+Family & people,阿姨,a-î,阿姨,aunt (maternal)
+Family & people,後生,hāu-senn,兒子(較文言),son (formal)
+Family & people,序大人,sī-tuā-lâng,長輩；父母,elders; parents
+Family & people,親情,tshin-tsiânn,親戚,relatives
+Family & people,頭家,thâu-ke,老闆,boss; owner
+Family & people,辛勞,sin-lô,員工；夥計,employee; hired hand
+Family & people,先生,sian-sinn,老師；先生,teacher; sir; doctor
+Family & people,學生,ha̍k-sing,學生,student
+Directions,正手,tsiànn-tshiú,右手邊,right (side)
+Directions,倒手,tò-tshiú,左手邊,left (side)
+Directions,頂面,tíng-bīn,上面,on top of; above
+Directions,下跤,ē-kha,下面,under; below
+Directions,內底,lāi-té,裡面,inside
+Directions,外口,guā-kháu,外面,outside
+Directions,邊仔,pinn--á,旁邊,next to; beside
+Directions,頭前,thâu-tsîng,前面,in front
+Directions,後壁,āu-piah,後面,behind
+Directions,正手爿,tsiànn-tshiú-pîng,右邊,right side
+Directions,倒手爿,tò-tshiú-pîng,左邊,left side
+Directions,中央,tiong-ng,中間,middle
 Body parts,頭,thâu,頭,head
 Body parts,面,bīn,臉,face
 Body parts,目睭,ba̍k-tsiu,眼睛,eyes
@@ -334,21 +322,37 @@ Body parts,喙齒,tshuì-khí,牙齒,teeth
 Body parts,肩胛頭,king-kah-thâu,肩膀,shoulder
 Body parts,尻川,kha-tshng,屁股,buttocks
 Body parts,指頭仔,tsíng-thâu-á,手指,fingers
-Places,厝,tshù,家; 房子,house; home
-Places,學校,ha̍k-hāu,學校,school
-Places,公司,kong-si,公司,company
-Places,病院,pēnn-īnn,醫院,hospital
-Places,車頭,tshia-thâu,車站,train/bus station
-Places,機場,ki-tiûnn,機場,airport
-Places,廟,biō,廟,temple
-Places,公園,kong-hn̂g,公園,park
-Places,菜市仔,tshài-tshī-á,菜市場,traditional market
-Places,便利商店,piān-lī-siong-tiàm,便利商店,convenience store
-Places,廁所,tshè-sóo,廁所,restroom
-Places,銀行,gîn-hâng,銀行,bank
-Places,台灣,Tâi-uân,台灣,Taiwan
-Places,台北,Tâi-pak,台北,Taipei
-Places,路,lōo,路,road; street
+Body parts,頷頸,ām-kún,脖子,neck
+Body parts,胸坎,hing-khám,胸口,chest
+Body parts,尻脊,kha-tsiah,背部,back (body)
+Body parts,腰,io,腰,waist
+Body parts,跤肚,kha-tóo,小腿肚,calf (of leg)
+Body parts,血,hueh,血,blood
+Body parts,骨,kut,骨,bone
+Body parts,皮,phuê,皮,skin
+Colors,紅色,âng-sik,紅色,red
+Colors,烏色,oo-sik,黑色,black
+Colors,白色,pe̍h-sik,白色,white
+Colors,黃色,n̂g-sik,黃色,yellow
+Colors,青色,tshinn-sik,綠色/藍色,green/blue
+Colors,紫色,tsí-sik,紫色,purple
+Colors,咖啡色,ka-pi-sik,咖啡色,brown
+Colors,灰色,hue-sik,灰色,gray
+Places & directions,病院,pēnn-īnn,醫院,hospital
+Places & directions,車頭,tshia-thâu,車站,train/bus station
+Places & directions,機場,ki-tiûnn,機場,airport
+Places & directions,廟,biō,廟,temple
+Places & directions,菜市仔,tshài-tshī-á,菜市場,traditional market
+Places & directions,便利商店,piān-lī-siong-tiàm,便利商店,convenience store
+Places & directions,銀行,gîn-hâng,銀行,bank
+Places & directions,台灣,Tâi-uân,台灣,Taiwan
+Places & directions,台北,Tâi-pak,台北,Taipei
+Places & directions,路,lōo,路,road; street
+Places & directions,車站,tshia-tsām,車站,station
+Places & directions,郵局,iû-kio̍k,郵局,post office
+Places & directions,餐廳,tshan-thiann,餐廳,restaurant
+Places & directions,橋,kiô,橋,bridge
+Places & directions,巷仔,hāng-á,巷子,alley; lane
 Transportation,車,tshia,車,vehicle; car
 Transportation,汽車,khì-tshia,汽車,car
 Transportation,機車,ki-tshia,機車,scooter; motorcycle
@@ -359,18 +363,37 @@ Transportation,飛行機,hue-lîng-ki,飛機,airplane
 Transportation,船,tsûn,船,boat; ship
 Transportation,駛車,sái-tshia,開車,to drive
 Transportation,行路,kiânn-lōo,走路,to walk (on foot)
-Weather,天氣,thinn-khì,天氣,weather
-Weather,落雨,lo̍h-hōo,下雨,to rain
-Weather,好天,hó-thinn,晴天,sunny weather
-Weather,落雪,lo̍h-seh,下雪,to snow
-Weather,風,hong,風,wind
-Weather,雲,hûn,雲,cloud
-Weather,熱,jua̍h,熱,hot (weather)
-Weather,寒,kuânn,冷,cold (weather)
-Weather,打雷,phah-luî,打雷,thunder
-Weather,風颱,hong-thai,颱風,typhoon
-Animals,狗,káu,狗,dog
-Animals,貓,niau,貓,cat
+Shopping & money,算便宜咧,sǹg sio̍k--leh,算便宜一點,give me a discount
+Shopping & money,找錢,tsāu-tsînn,找錢,give change
+Shopping & money,店,tiàm,店,shop; store
+Shopping & money,市場,tshī-tiûnn,市場,market
+Shopping & money,買物件,bé mi̍h-kiānn,買東西,to shop; buy things
+Weather & nature,天氣,thinn-khì,天氣,weather
+Weather & nature,落雨,lo̍h-hōo,下雨,to rain
+Weather & nature,好天,hó-thinn,晴天,sunny weather
+Weather & nature,落雪,lo̍h-seh,下雪,to snow
+Weather & nature,風,hong,風,wind
+Weather & nature,雲,hûn,雲,cloud
+Weather & nature,熱,jua̍h,熱,hot (weather)
+Weather & nature,寒,kuânn,冷,cold (weather)
+Weather & nature,打雷,phah-luî,打雷,thunder
+Weather & nature,風颱,hong-thai,颱風,typhoon
+Weather & nature,日頭,ji̍t-thâu,太陽,sun
+Weather & nature,月娘,gue̍h-niû,月亮,moon
+Weather & nature,星,tshinn,星星,star
+Weather & nature,天,thinn,天,sky; heaven
+Weather & nature,地,tē,地,ground; earth
+Weather & nature,海,hái,海,sea
+Weather & nature,山,suann,山,mountain
+Weather & nature,溪,khe,溪,stream; river
+Weather & nature,石頭,tsio̍h-thâu,石頭,stone; rock
+Weather & nature,土,thóo,土,soil; earth
+Weather & nature,火,hué,火,fire
+Weather & nature,樹仔,tshiū-á,樹,tree
+Weather & nature,花,hue,花,flower
+Weather & nature,草,tsháu,草,grass
+Animals,狗仔,káu-á,狗,dog
+Animals,貓仔,niau-á,貓,cat
 Animals,豬,ti,豬,pig
 Animals,牛,gû,牛,cow; cattle
 Animals,雞,ke,雞,chicken
@@ -379,30 +402,47 @@ Animals,魚仔,hî-á,魚,fish (animal)
 Animals,鼠仔,tshí-á,老鼠,mouse; rat
 Animals,兔仔,thòo-á,兔子,rabbit
 Animals,羊,iûnn,羊,sheep; goat
-Household items,桌仔,toh-á,桌子,table
-Household items,椅仔,í-á,椅子,chair
-Household items,眠床,bîn-tshn̂g,床,bed
-Household items,冊,tsheh,書,book
-Household items,筆,pit,筆,pen
-Household items,電話,tiān-uē,電話,telephone
-Household items,電視,tiān-sī,電視,television
-Household items,冷氣,líng-khì,冷氣,air conditioner
-Household items,電火,tiān-hué,電燈,electric light
-Household items,鎖匙,só-sî,鑰匙,key
-Household items,碗,uánn,碗,bowl
-Household items,箸,tī,筷子,chopsticks
-Household items,杯仔,pue-á,杯子,cup
-Household items,門,mn̂g,門,door
-Household items,窗仔,thang-á,窗戶,window
-Clothing,衫,sann,衣服,clothes
-Clothing,褲,khòo,褲子,pants
-Clothing,鞋,ê,鞋子,shoes
+Animals,馬,bé,馬,horse
+Animals,虎,hóo,老虎,tiger
+Animals,象,tshiūnn,大象,elephant
+Animals,蛇,tsuâ,蛇,snake
+Animals,蜂,phang,蜜蜂,bee
+Animals,蝶仔,ia̍h-á,蝴蝶,butterfly
+Animals,狗蟻,káu-hiā,螞蟻,ant
+Animals,蠓,báng,蚊子,mosquito
+Animals,鴨,ah,鴨,duck
+Animals,鵝,gô,鵝,goose
+Household & objects,桌仔,toh-á,桌子,table
+Household & objects,椅仔,í-á,椅子,chair
+Household & objects,眠床,bîn-tshn̂g,床,bed
+Household & objects,冊,tsheh,書,book
+Household & objects,筆,pit,筆,pen
+Household & objects,電話,tiān-uē,電話,telephone
+Household & objects,電視,tiān-sī,電視,television
+Household & objects,冷氣,líng-khì,冷氣,air conditioner
+Household & objects,電火,tiān-hué,電燈,electric light
+Household & objects,鎖匙,só-sî,鑰匙,key
+Household & objects,碗,uánn,碗,bowl
+Household & objects,箸,tī,筷子,chopsticks
+Household & objects,杯仔,pue-á,杯子,cup
+Household & objects,門,mn̂g,門,door
+Household & objects,窗仔,thang-á,窗戶,window
+Household & objects,厝內,tshù-lāi,家裡；房間,inside the house; home
+Household & objects,房間,pâng-king,房間,room
+Household & objects,灶跤,tsàu-kha,廚房,kitchen
+Household & objects,便所,piān-sóo,廁所,toilet
+Household & objects,冰箱,ping-siunn,冰箱,refrigerator
+Household & objects,電腦,tiān-náu,電腦,computer
+Household & objects,手機仔,tshiú-ki-á,手機,cell phone
+Household & objects,紙,tsuá,紙,paper
+Household & objects,雨傘,hōo-suànn,雨傘,umbrella
+Household & objects,鏡,kiànn,鏡子,mirror
+Household & objects,藥仔,io̍h-á,藥,medicine
 Clothing,帽仔,bō-á,帽子,hat
-Clothing,穿,tshīng,穿,to wear
+Clothing,戴,tì,戴,to wear (on head)
 Clothing,褪,thǹg,脫,to take off (clothes)
 Clothing,襪仔,bue̍h-á,襪子,socks
 Clothing,外套,guā-thò,外套,jacket; coat
-Classifiers,个,ê,個,generic classifier
 Classifiers,本,pún,本,classifier for books
 Classifiers,台,tâi,台,classifier for machines/vehicles
 Classifiers,隻,tsiah,隻,classifier for animals
@@ -410,36 +450,83 @@ Classifiers,枝,ki,支,classifier for long thin objects
 Classifiers,張,tiunn,張,classifier for flat objects
 Classifiers,粒,lia̍p,粒/顆,classifier for round objects
 Classifiers,杯,pue,杯,classifier for cups
-Classifiers,碗,uánn,碗,classifier for bowls
 Classifiers,擺,pái,次,classifier for occurrences/times
-Useful phrases,會當,ē-tàng,可以; 能夠,to be able to
-Useful phrases,袂當,bē-tàng,不能; 不可以,cannot; not allowed
-Useful phrases,無閒,bô-îng,忙,busy
-Useful phrases,有閒,ū-îng,有空,free (time)
-Useful phrases,歇睏,hioh-khùn,休息,to rest
-Useful phrases,上班,siōng-pan,上班,to go to work
-Useful phrases,落班,lo̍h-pan,下班,to get off work
-Useful phrases,出去,tshut-khì,出去,to go out
-Useful phrases,入來,ji̍p-lâi,進來,to come in
-Useful phrases,出來,tshut-lâi,出來,to come out
-Useful phrases,入去,ji̍p-khì,進去,to go in
-Useful phrases,起床,khí-tshn̂g,起床,to get out of bed
-Useful phrases,洗身軀,sé-sin-khu,洗澡,to take a shower/bath
-Useful phrases,刷喙齒,tshè-tshuì-khí,刷牙,to brush teeth
-Useful phrases,食藥仔,tsia̍h io̍h-á,吃藥,to take medicine
-Useful phrases,看醫生,khuànn i-sing,看醫生,to see a doctor
-Useful phrases,生病,senn-pēnn,生病,to be sick
-Useful phrases,感冒,kám-mōo,感冒,to catch a cold
-Useful phrases,頭疼,thâu-thiànn,頭痛,headache
-Useful phrases,真,tsin,很,very
-Useful phrases,誠,tsiânn,非常,very; really
-Useful phrases,有夠,ū-kàu,夠; 相當,quite; enough
-Useful phrases,小可仔,sió-khuá-á,一點點,a little bit
-Useful phrases,逐工,ta̍k-kang,每天,every day
-Useful phrases,有時,ū-sî,有時,sometimes
-Useful phrases,拄仔好,tú-á-hó,剛好,just right; coincidentally
-Useful phrases,煞矣,suah--ah,結束了,it's over; finished
-Useful phrases,猶咧,iáu-leh,還在,still (doing/being)
-Useful phrases,正經,tsìng-king,認真; 真的,seriously; really
-Useful phrases,騙人,phiàn--lâng,騙人,to lie; deceive
-Useful phrases,拜託,pài-thok,拜託,please (request)
+Everyday phrases & routines,會當,ē-tàng,可以; 能夠,to be able to
+Everyday phrases & routines,袂當,bē-tàng,不能; 不可以,cannot; not allowed
+Everyday phrases & routines,歇睏,hioh-khùn,休息,to rest
+Everyday phrases & routines,出去,tshut-khì,出去,to go out
+Everyday phrases & routines,入來,ji̍p-lâi,進來,to come in
+Everyday phrases & routines,出來,tshut-lâi,出來,to come out
+Everyday phrases & routines,入去,ji̍p-khì,進去,to go in
+Everyday phrases & routines,刷喙齒,tshè-tshuì-khí,刷牙,to brush teeth
+Everyday phrases & routines,食藥仔,tsia̍h io̍h-á,吃藥,to take medicine
+Everyday phrases & routines,看醫生,khuànn i-sing,看醫生,to see a doctor
+Everyday phrases & routines,生病,senn-pēnn,生病,to be sick
+Everyday phrases & routines,感冒,kám-mōo,感冒,to catch a cold
+Everyday phrases & routines,頭疼,thâu-thiànn,頭痛,headache
+Everyday phrases & routines,誠,tsiânn,非常,very; really
+Everyday phrases & routines,有夠,ū-kàu,夠; 相當,quite; enough
+Everyday phrases & routines,小可仔,sió-khuá-á,一點點,a little bit
+Everyday phrases & routines,拄仔好,tú-á-hó,剛好,just right; coincidentally
+Everyday phrases & routines,煞矣,suah--ah,結束了,it's over; finished
+Everyday phrases & routines,猶咧,iáu-leh,還在,still (doing/being)
+Everyday phrases & routines,正經,tsìng-king,認真; 真的,seriously; really
+Everyday phrases & routines,騙人,phiàn--lâng,騙人,to lie; deceive
+Everyday words (food and drink),點心,tiám-sim,點心,snack
+Everyday words (food and drink),食點心,tsia̍h tiám-sim,吃點心,to have a snack
+Everyday words (food and drink),糖仔,thn̂g-á,糖果,candy
+Everyday words (food and drink),枝仔冰,ki-á-ping,冰棒,popsicle
+Everyday words (food and drink),冰,ping,冰,ice
+Everyday words (food and drink),汽水,khì-tsuí,汽水,soda; soft drink
+Everyday words (actions),寫字,siá-jī,寫字,to write (characters)
+Everyday words (actions),畫圖,uē-tôo,畫圖,to draw a picture
+Everyday words (actions),圖,tôo,圖,picture; drawing
+Everyday words (actions),歌,kua,歌,song
+Everyday words (actions),聽歌,thiann-kua,聽歌,to listen to music
+Everyday words (actions),看電視,khuànn tiān-sī,看電視,to watch TV
+Everyday words (actions),講古,kóng-kóo,講故事,to tell a story
+Everyday words (actions),故事,kòo-sū,故事,story
+Everyday words (actions),聽故事,thiann kòo-sū,聽故事,to listen to a story
+Everyday words (actions),拍球,phah-kiû,打球,to play ball
+Everyday words (actions),踢,that,踢,to kick
+Everyday words (actions),球,kiû,球,ball
+Everyday words (actions),好耍,hó-sńg,好玩,fun (to play)
+Everyday words (actions),走相逐,tsáu-sio-jiok,追逐;賽跑,to chase; race each other
+Everyday words (actions),覕相揣,bih-sio-tshuē,捉迷藏,hide-and-seek
+Everyday words (actions),運動,ūn-tōng,運動,to exercise; sports
+Everyday words (actions),攬,lám,抱,to hug
+Everyday words (actions),唚,tsim,親（吻）,to kiss
+Everyday words (actions),惜,sioh,疼惜,to cherish; show affection to
+Everyday words (daily routine),洗手,sé-tshiú,洗手,to wash hands
+Everyday words (daily routine),洗面,sé-bīn,洗臉,to wash one's face
+Everyday words (daily routine),洗跤,sé-kha,洗腳,to wash one's feet
+Everyday words (daily routine),穿鞋,tshīng ê,穿鞋,to put on shoes
+Everyday words (daily routine),穿褲,tshīng khòo,穿褲子,to put on pants
+Everyday words (daily routine),褪衫,thǹg-sann,脫衣服,to take off clothes
+Everyday words (daily routine),睏晝,khùn-tàu,睡午覺,to take a nap
+Everyday words (daily routine),愛睏,ài-khùn,想睡; 睏,sleepy
+Everyday words (daily routine),放尿,pàng-jiō,尿尿,to pee
+Everyday words (daily routine),放屎,pàng-sái,大便,to poop
+Everyday words (daily routine),摒掃,piànn-sàu,打掃,to clean up
+Everyday words (daily routine),掃塗跤,sàu thôo-kha,掃地,to sweep the floor
+Everyday words (daily routine),塗跤,thôo-kha,地上,floor; ground
+Everyday words (feelings and body),腹肚疼,pak-tóo thiànn,肚子痛,to have a stomachache
+Everyday words (feelings and body),頭殼疼,thâu-khak thiànn,頭痛,to have a headache
+Everyday words (feelings and body),頭殼,thâu-khak,頭,head
+Everyday words (feelings and body),發燒,huat-sio,發燒,to have a fever
+Everyday words (feelings and body),跋倒,pua̍h-tó,跌倒,to fall down
+Everyday words (feelings and body),乖,kuai,乖,well-behaved (of a child)
+Everyday words (feelings and body),毋願,m̄-guān,不願意,unwilling; won't
+Everyday words (feelings and body),惡,ok,兇,fierce; mean
+Everyday words (feelings and body),狡怪,káu-kuài,調皮; 頑皮,mischievous; naughty
+Everyday words (school and outings),教室,kàu-sik,教室,classroom
+Everyday words (school and outings),同學,tông-ha̍k,同學,classmate
+Everyday words (school and outings),冊包,tsheh-pau,書包,schoolbag
+Everyday words (school and outings),簿仔,phōo-á,簿子,notebook
+Everyday words (school and outings),生日,senn-ji̍t,生日,birthday
+Everyday words (school and outings),騎車,khiâ-tshia,騎車,to ride (a bike/scooter)
+Everyday words (school and outings),坐車,tsē-tshia,坐車,to ride in a vehicle
+Everyday words (school and outings),等車,tán-tshia,等車,to wait for the bus
+Everyday words (school and outings),過馬路,kuè bé-lōo,過馬路,to cross the road
+Everyday words (school and outings),馬路,bé-lōo,馬路,road (for vehicles)
+Everyday words (school and outings),青紅燈,tshinn-âng-ting,紅綠燈,traffic light
