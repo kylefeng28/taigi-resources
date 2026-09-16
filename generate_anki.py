@@ -96,6 +96,27 @@ MODEL = genanki.Model(
     css=STYLE
 )
 
+class CustomNote(genanki.Note):
+    def __init__(self, v, record, media_files):
+        definition = record[DEF] if record else ""
+        examples_html = build_examples_html(record, media_files)
+        audio_tag = sound_tag(record[AUDIO_FILE] if record else None, media_files)
+
+        fields=[
+            v[HANJI],
+            v[TAILO],
+            v[MANDARIN],
+            v[ENGLISH],
+            v[CATEGORY],
+            definition,
+            examples_html,
+            audio_tag,
+        ]
+
+        guid = genanki.guid_for(fields[0], fields[1])
+
+        super().__init__(model=MODEL, fields=fields, guid=guid)
+
 
 def read_vocab(path):
     rows = []
@@ -177,23 +198,7 @@ def build_deck(vocab_path, dict_files, deck_name, output_path):
         else:
             unmatched.append(v)
 
-        definition = record[DEF] if record else ""
-        examples_html = build_examples_html(record, media_files)
-        audio_tag = sound_tag(record[AUDIO_FILE] if record else None, media_files)
-
-        note = genanki.Note(
-            model=MODEL,
-            fields=[
-                v[HANJI],
-                v[TAILO],
-                v[MANDARIN],
-                v[ENGLISH],
-                v[CATEGORY],
-                definition,
-                examples_html,
-                audio_tag,
-            ],
-        )
+        note = CustomNote(v, record, media_files)
         deck.add_note(note)
 
     package = genanki.Package(deck, media_files=media_files)

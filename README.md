@@ -1,5 +1,8 @@
 ## Resources for Taigi/Taiwanese/Minnan/Southern Hokkien 台語/閩南語/學習參看資料
 
+## Anki Deck
+Run `uv run generate_anki.py` (depends on genanki and tqdm).
+
 ## Anki Taigi Helper
 [AnkiWeb link](https://ankiweb.net/shared/info/706708885) (id: 706708885)
 
@@ -45,3 +48,6 @@ The most commonly used ones are [Pe̍h-ōe-jī (POJ)](https://en.wikipedia.org/w
 Install [Tampermonkey](https://www.tampermonkey.net/) for Chrome or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for Firefox
 
 - MoE Dictionary of Frequently-Used Taiwanese Taigi: [userscripts/moe_taigi_sutian.user.js](https://raw.githubusercontent.com/kylefeng28/taigi-resources/refs/heads/main/userscripts/moe_taigi_sutian.user.js): adds audio links to audio play buttons
+
+## References
+- [hiroshiyui/anki-taigi](https://github.com/hiroshiyui/anki-taigi) - ODS parser for MoE dictionary data
